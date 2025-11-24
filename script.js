@@ -121,32 +121,90 @@ btn.addEventListener("mouseleave", () => {
 
 
 
-// ------------------------------------------
-// HOLOGRAM CARD LOGIC (FINAL TOGGLE SYSTEM)
-// ------------------------------------------
 
-const holoCard = document.querySelector(".holo-card");
-const marker = document.querySelector(".map-marker");
-const closeBtn = document.querySelector(".holo-close");
+// ----------------------------
+// KING'S ROW CARD — CLEAN FIX
+// ----------------------------
 
+const kingsMarker = document.querySelector(".map-marker");
+const kingsCard   = document.querySelector(".holo-card");
+const kingsClose  = document.querySelector(".holo-close");
 
+// فتح البطاقة - smooth open
+kingsMarker.addEventListener("click", () => {
+    kingsCard.classList.remove("hidden");
 
-// الضغط على الماركر يفتح البطاقة (للجوال)
-marker.addEventListener("click", () => {
-    holoCard.classList.remove("hidden");
-    holoCard.classList.add("active");
+    setTimeout(() => {
+        kingsCard.classList.add("active");
+    }, 20);
 });
 
-// زر الإغلاق
-closeBtn.addEventListener("click", () => {
-    holoCard.classList.remove("active");
-    holoCard.classList.add("hidden");
+// زر الإغلاق (X)
+kingsClose.addEventListener("click", () => {
+    closeKings();
 });
 
-// الضغط خارج البطاقة
+// إغلاق عند الضغط خارج البطاقة
 document.addEventListener("click", (e) => {
-    if (!holoCard.contains(e.target) && !marker.contains(e.target)) {
-        holoCard.classList.remove("active");
-        holoCard.classList.add("hidden");
-    }
+    // اذا البطاقة مو مفتوحة خلها ساكته
+    if (!kingsCard.classList.contains("active")) return;
+
+    // اذا ضغط داخل البطاقة أو على الماركر لا تقفل
+    if (kingsCard.contains(e.target) || e.target.closest(".map-marker")) return;
+
+    // غير كذا... قفل البطاقة
+    closeKings();
 });
+
+// دالة الإغلاق
+function closeKings() {
+    kingsCard.classList.remove("active");
+    setTimeout(() => kingsCard.classList.add("hidden"), 200);
+}
+
+
+
+
+
+
+
+// ----------------------------
+// OMNIC ALERT CARD — CLEAN FIX
+// ----------------------------
+
+const omnicMarker = document.querySelector(".omnic-alert");
+const omnicCard = document.getElementById("omnicCard");
+const omnicClose = document.querySelector(".holo-close-omnic");
+
+// فتح بطاقة OMNIC - smooth open
+omnicMarker.addEventListener("click", () => {
+    omnicCard.classList.remove("hidden");
+
+    setTimeout(() => {
+        omnicCard.classList.add("active");
+    }, 20);
+});
+
+// زر الإغلاق (X)
+omnicClose.addEventListener("click", () => {
+    closeOmnic();
+});
+
+// إغلاق عند الضغط خارج البطاقة
+document.addEventListener("click", (e) => {
+    // اذا البطاقة مو مفتوحة خلنا ساكتين
+    if (!omnicCard.classList.contains("active")) return;
+
+    // اذا ضغط داخل البطاقة أو على الماركر لا تسوي شيء
+    if (omnicCard.contains(e.target) || e.target.closest(".omnic-alert")) return;
+
+    // غير كذا... قفل البطاقة
+    closeOmnic();
+});
+
+
+// دالة الإغلاق
+function closeOmnic() {
+    omnicCard.classList.remove("active");
+    setTimeout(() => omnicCard.classList.add("hidden"), 200);
+}

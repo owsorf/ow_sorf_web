@@ -252,9 +252,15 @@ body {
 }
 
 /* التأثير عند المرور */
-.map-marker:hover {
-  transform: translate(-50%, -50%) scale(1.06);
+.map-marker {
+  transform: translate(-50%, -50%);
 }
+
+.map-marker:hover {
+  scale: 1.06;
+}
+
+
 
 .map-marker:hover .marker-icon {
   box-shadow: 0 0 12px rgba(255, 130, 0, 0.9);
@@ -421,7 +427,7 @@ body {
     font-size: 15px;
 }
 
-.holo-body span {
+.holo-body-kings span {
     color: #ff9b00;
     font-weight: 600;
 }
@@ -466,4 +472,385 @@ body {
 .hidden {
     display: none !important;
 }
+
+/* -----------------------------------------
+   Polaroid Image inside Holo Card
+----------------------------------------- */
+.holo-polaroid {
+    width: 160px;
+    height: auto;
+    margin-bottom: 12px;
+
+    /* عشان ينحط يمين الهيدر */
+    float: right;
+    margin-left: 20px;
+
+    transform: rotate(2deg); /* إحساس صورة ملصوقة */
+}
+
+.holo-polaroid img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+}
+
+
+
+.alert-icon-wrapper {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+.alert-triangle {
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 28px solid #ff1a1a; /* أحمر نيون */
+    filter: drop-shadow(0 0 8px #ff1a1a);
+    animation: pulseAlert 1.4s infinite ease-in-out;
+}
+
+.alert-exclamation {
+    position: absolute;
+    top: 5px;
+    left: 13px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 6px rgba(255,50,50,0.9);
+    pointer-events: none;
+}
+
+@keyframes pulseAlert {
+    0% {
+        border-bottom-color: #ff4747;
+        filter: drop-shadow(0 0 4px #ff2a2a);
+        transform: scale(1);
+    }
+    50% {
+        border-bottom-color: #ff0000;
+        filter: drop-shadow(0 0 15px #ff0000);
+        transform: scale(1.08);
+    }
+    100% {
+        border-bottom-color: #ff4747;
+        filter: drop-shadow(0 0 4px #ff2a2a);
+        transform: scale(1);
+    }
+}
+
+
+
+.omnic-alert {
+    position: absolute;
+    top: 78%;   /* ← هنا نحدد نزولها تحت */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 30;
+}
+
+
+
+.bg-img,
+.purple-layer,
+.moving-title {
+    pointer-events: none;
+}
+
+
+/* -----------------------------------------
+   OMNIC HOLOGRAM CARD
+----------------------------------------- */
+.holo-card-omnic {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    width: 380px;
+    padding: 22px;
+    border-radius: 16px;
+
+    background: rgba(35, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 50, 50, 0.35);
+
+    box-shadow: 0 0 55px rgba(255, 0, 0, 0.45);
+
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.8);
+
+    z-index: 999999;
+    transition: opacity 0.25s ease, transform 0.45s cubic-bezier(0.19,1,0.22,1);
+}
+
+/* حالة الظهور */
+.holo-card-omnic.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* scanlines ناعمة */
+.holo-card-omnic::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(255,50,50,0.10) 0%,
+        rgba(255,50,50,0.02) 40%,
+        rgba(255,50,50,0.10) 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+    animation: omnic-scan 6s linear infinite;
+}
+
+@keyframes omnic-scan {
+    0% { opacity: 0.25; }
+    50% { opacity: 0.45; }
+    100% { opacity: 0.25; }
+}
+
+/* Close button */
+.holo-close-omnic {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+    opacity: 0.75;
+}
+
+.holo-close-omnic:hover {
+    opacity: 1;
+}
+
+/* Title */
+.holo-header-omnic {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px !important;   /* ← صغّره */
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 12px rgba(255, 0, 0, 0.75);
+}
+
+/* Body */
+.holo-body-omnic p {
+    margin: 5px 0;
+    font-size: 13px !important;   /* ← صغّره */
+    line-height: 1.3;
+}
+
+.holo-body-omnic span {
+    color: #ff2e2e;
+    font-weight: 700;
+}
+
+/* Polaroid */
+.holo-polaroid-omnic img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 120px !important;
+    object-fit: cover !important;
+}
+
+
+
+
+
+
+/* تصغير بطاقة OMNIC وتحريكها يمين */
+#omnicCard {
+    width: 310px !important;       /* تصغير العرض */
+    padding: 18px !important;
+    left: 78% !important;          /* يمين */
+    top: 50% !important;
+    transform: translate(-50%, -50%) scale(0.78) !important;
+}
+
+/* لما تظهر */
+#omnicCard.active {
+    transform: translate(-50%, -50%) scale(0.78) !important;
+}
+
+#omnicCard {
+    height: 200px !important;   /* قصّر ارتفاع البطاقة */
+    overflow: hidden !important; /* يمنع تمدد الذقن */
+}
+
+
+/* ------- OMNIC Polaroid (Final Clean Version) ------- */
+
+.holo-polaroid-omnic {
+    width: 120px !important;
+    float: right;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    transform: rotate(2deg);
+}
+
+.holo-polaroid-omnic img {
+    width: 120%;
+    height: auto;
+    max-height: 110px !important;
+    object-fit: cover;
+    border-radius: 6px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.45));
+}
+
+/* تعديل عنوان OMNIC */
+.holo-header-omnic {
+    font-family: 'Anton', sans-serif;
+    font-size: 20px !important;
+    margin-bottom: 8px !important;
+    letter-spacing: 1px;
+}
+
+/* ضبط نص الجسم */
+.holo-body-omnic p {
+    margin: 4px 0 !important;
+    font-size: 12px !important;
+    line-height: 1.25;
+}
+
+/* تقليل المساحة العلوية للبطاقة */
+#omnicCard {
+    height: 180px !important;
+    overflow: hidden !important;
+}
+
+
+/* -------------------------------------------------
+   🔥 توحيد حجم بطاقات KING + OMNIC بدون تخريب أي شيء
+-------------------------------------------------- */
+
+/* حجم موحّد للبطاقتين */
+.shared-holo {
+    width: 320px !important;
+    padding: 18px !important;
+    border-radius: 16px !important;
+    transform: translate(-50%, -50%) scale(0.78) !important;
+    height: 210px !important;   /* نفس الارتفاع للكرتين */
+    overflow: hidden !important;
+}
+
+/* ضبط الصورة داخل كل بطاقة */
+.shared-holo .holo-polaroid img,
+.shared-holo .holo-polaroid-omnic img {
+    width: 105% !important;
+    height: auto !important;
+    max-height: 110px !important;
+    object-fit: cover !important;
+    border-radius: 6px;
+}
+
+/* توحيد حجم العناوين */
+.shared-holo .holo-header,
+.shared-holo .holo-header-omnic {
+    font-size: 20px !important;
+    margin-bottom: 8px !important;
+}
+
+/* توحيد حجم النص */
+.shared-holo .holo-body p,
+.shared-holo .holo-body-omnic p {
+    margin: 4px 0 !important;
+    font-size: 16px !important;
+    line-height: 1.25 !important;
+}
+
+.holo-card {
+    width: 360px !important;
+    padding: 24px !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+}
+
+.holo-card.active {
+    transform: translate(-50%, -50%) scale(1) !important;
+}
+
+.holo-polaroid {
+    width: 150px !important;
+}
+
+
+#omnicCard {
+    width: 360px !important;
+    height: 220px !important;
+    padding: 20px !important;
+    transform: translate(-50%, -50%) scale(0.9) !important;
+    overflow: hidden !important;
+}
+
+/* لما تظهر */
+#omnicCard.active {
+    transform: translate(-50%, -50%) scale(0.9) !important;
+}
+
+/* حجم الصورة داخل البطاقة */
+.holo-polaroid-omnic {
+    width: 135px !important;
+}
+
+.holo-polaroid-omnic img {
+    max-height: 130px !important;
+}
+
+
+/* KING'S ROW TEXT SIZES */
+.holo-header {
+    font-size: 28px !important;
+}
+
+.holo-body-kings p {
+    font-size: 15px !important;
+}
+
+.holo-body-kings span {
+    font-size: 17px !important;
+    font-weight: 700 !important;
+}
+
+/* OMNIC ALERT TEXT SIZES */
+.holo-header-omnic {
+    font-size: 26px !important;
+}
+
+.holo-body-omnic p {
+    font-size: 95px !important;
+}
+
+.holo-body-omnic span {
+    font-size: 19px !important;
+    font-weight: 700 !important;
+}
+
+
+/* تكبير صورة OMNIC فقط */
+#omnicCard .holo-polaroid-omnic img {
+    width: 120% !important;    /* ← توسعة العرض */
+    max-height: 150px !important; /* ← رفع الارتفاع */
+    object-fit: cover !important;
+}
+
+/* تحريك حاوية صورة OMNIC يسار */
+#omnicCard .holo-polaroid-omnic {
+    margin-right: 17px !important;  /* ← يحرك يسار */
+}
+
+.omnic-alert .marker-line {
+    background-color: #ff3b3b !important; /* أحمر واضح */
+}
+
+
 

@@ -33,8 +33,9 @@
         <button class="ow-button">Guides</button>
     </div>
 
-    <div class="map-marker">
-    
+<!-- نقطة KING'S ROW الأصلية -->
+<div class="map-marker">
+
     <div class="marker-icon-wrapper">
         <div class="marker-ring"></div>
         <div class="marker-icon"></div>
@@ -45,14 +46,40 @@
         <div class="marker-line"></div>
     </div>
 
+</div>
+
+
+<!-- نقطة OMNIC ALERT الجديدة والمستقلة -->
+<div class="map-marker omnic-alert">
+
+    <div class="alert-icon-wrapper">
+        <div class="alert-triangle"></div>
+        <div class="alert-exclamation">!</div>
+    </div>
+
+    <div>
+        <div class="marker-text">OMNIC ALERT</div>
+        <div class="marker-line"></div>
+    </div>
+
+</div>
+
+
+
 </div> <!-- نهاية map-marker -->
 
 
 <!-- HOLOGRAM CARD (هنا مكانها الصحيح) -->
-<div class="holo-card hidden">
+<div class="holo-card shared-holo hidden">
+
+
+    <div class="holo-polaroid">
+        <img src="images/kings-row-polaroid.png.png" alt="King's Row Snapshot">
+    </div>
+
     <div class="holo-header">KING'S ROW</div>
 
-    <div class="holo-body">
+    <div class="holo-body-kings">
         <p><span>Released:</span> 2016</p>
         <p><span>Type:</span> Hybrid</p>
         <p><span>Location:</span> London, England</p>
@@ -61,6 +88,28 @@
 
     <div class="holo-close">×</div>
 </div>
+
+
+<!-- OMNIC ALERT CARD -->
+<div id="omnicCard" class="holo-card-omnic shared-holo hidden">
+
+
+    <div class="holo-close-omnic">×</div>
+
+    <div class="holo-polaroid-omnic">
+        <img src="images/Polaroid Omnic.png" alt="Omnic Alert">
+    </div>
+
+    <div class="holo-header-omnic">OMNIC ALERT</div>
+
+    <div class="holo-body-omnic">
+        <p><span>Event:</span> Null Sector Uprising begins in King's Row.</p>
+        <p><span>Threat Level:</span> Critical - multiple automated units detected.</p>
+        <p><span>Status:</span> Evacuations in progress. Stay inside.</p>
+    </div>
+
+</div>
+
 
 
 </div>
