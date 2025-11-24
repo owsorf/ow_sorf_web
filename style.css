@@ -1,0 +1,469 @@
+/* -----------------------------------------
+   Base: Body
+----------------------------------------- */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1a0033;
+}
+
+
+/* -----------------------------------------
+   Layer 1: Background Image
+----------------------------------------- */
+.bg-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 101%;
+    height: 101%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+
+/* -----------------------------------------
+   App Container
+----------------------------------------- */
+#app {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+/* -----------------------------------------
+   Layer 2: Purple Overlay
+----------------------------------------- */
+.purple-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(120, 0, 255, 0.35);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+}
+
+
+/* -----------------------------------------
+   Buttons Layer
+----------------------------------------- */
+.buttons-layer {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    gap: 80px;
+    z-index: 3;
+}
+
+
+/* -----------------------------------------
+   Buttons
+----------------------------------------- */
+.ow-button {
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.12);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    min-width: 120px;
+    text-align: center;
+    white-space: nowrap;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+
+    position: relative;
+    overflow: hidden;
+}
+
+.ow-button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+
+/* -----------------------------------------
+   Main Title
+----------------------------------------- */
+.main-title {
+    position: absolute;
+    top: 70px;
+    left: 40px;
+    color: white;
+    font-family: 'Anton', sans-serif;
+    font-size: 55px;
+    letter-spacing: 2px;
+    z-index: 5;
+
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+}
+
+
+/* -----------------------------------------
+   Background Moving Text
+----------------------------------------- */
+.moving-title {
+    position: absolute;
+    top: 55%;
+    left: -200%;
+    transform: translateY(-50%);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 90px;
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.15);
+    white-space: nowrap;
+    z-index: 1;
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+
+    animation: slide-loop 60s linear infinite;
+}
+
+@keyframes slide-loop {
+    0% { left: -200%; }
+    100% { left: 100%; }
+}
+
+
+/* -----------------------------------------
+   GIF overlay inside button
+----------------------------------------- */
+.gif-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    z-index: -1;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+
+/* -----------------------------------------
+   TRACER LIGHTNING APNG
+----------------------------------------- */
+.btn-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.tracer-effect {
+    position: absolute;
+    top: -30px;
+    left: -30px;
+    width: calc(100% + 60px);
+    height: calc(100% + 60px);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 1;
+    transition: opacity 0.45s ease-out;
+}
+
+
+/* -----------------------------------------
+   MAP MARKER (KING'S ROW)
+----------------------------------------- */
+/* ---------------------------
+   MAP MARKER (NEW FIXED VERSION)
+----------------------------*/
+.map-marker {
+  position: absolute;
+  top: 40%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: transform 0.25s ease;
+  z-index: 30;
+}
+
+.marker-icon-wrapper {
+  position: relative;
+  width: 34px;
+  height: 34px;
+}
+
+/* الأيقونة الأساسية */
+.marker-icon {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #ff8a00;
+  border-radius: 5px;
+  transform: translate(-50%, -50%) rotate(45deg);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+}
+
+/* الحلقة الدوارة */
+.marker-ring {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  border: 3px solid rgba(255, 136, 0, 0.6);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  animation: rotateRing 1.6s linear infinite;
+  z-index: 1;
+}
+
+@keyframes rotateRing {
+  0%   { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* النص */
+.marker-text {
+  font-size: 22px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px rgba(0,0,0,0.5);
+  font-family: 'Anton', sans-serif;
+}
+
+/* الخط تحت النص */
+.marker-line {
+  width: 110px;
+  height: 4px;
+  background: #ff8a00;
+  margin-top: 3px;
+  box-shadow: 0 0 10px rgba(255, 136, 0, 0.6);
+}
+
+/* التأثير عند المرور */
+.map-marker:hover {
+  transform: translate(-50%, -50%) scale(1.06);
+}
+
+.map-marker:hover .marker-icon {
+  box-shadow: 0 0 12px rgba(255, 130, 0, 0.9);
+}
+
+.map-marker:hover .marker-ring {
+  border-color: rgba(255, 136, 0, 1);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+
+
+
+/* الحاوية */
+.map-marker-animated {
+    position: absolute;
+    top: 48%;    /* عدل حسب رغبتك */
+    left: 30%;   /* عدل حسب رغبتك */
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    cursor: pointer;
+    z-index: 20;
+    user-select: none;
+}
+
+/* مركز العلامة (المربع + الحلقة) */
+.marker-center {
+    position: relative;
+    width: 30px;
+    height: 30px;
+}
+
+/* المربع */
+.marker-square {
+    width: 18px;
+    height: 18px;
+    border: 3px solid #ff8a00;
+    border-radius: 4px;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    box-shadow: 0 0 10px rgba(255, 150, 0, 0.6);
+}
+
+/* الحلقة اللي تدور */
+.marker-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 45px;
+    height: 45px;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(255, 140, 0, 0.4);
+    border-radius: 50%;
+    animation: spinRing 4s linear infinite;
+    box-shadow: 0 0 18px rgba(255, 140, 0, 0.2);
+}
+
+/* حركة دوران الحلقة */
+@keyframes spinRing {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* النص */
+.marker-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.marker-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    color: white;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.marker-underline {
+    width: 95px;
+    height: 4px;
+    background: #ff8a00;
+    margin-top: 3px;
+    box-shadow: 0 0 12px rgba(255, 140, 0, 0.6);
+}
+
+
+
+/* الحلقة الدوارة حول الأيقونة */
+.marker-spin-ring {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 138, 0, 0.6);
+    border-radius: 50%;
+    top: -5px;
+    left: -5px;
+
+    border-top-color: transparent;
+    border-left-color: transparent;
+
+    animation: spin 1.3s linear infinite;
+    pointer-events: none;
+}
+
+/* الأنيميشن */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+
+
+/* -----------------------------------------
+   HOLOGRAM CARD (FINAL FIXED VERSION)
+----------------------------------------- */
+
+.holo-card {
+    position: absolute;                 /* مهم جداً */
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7);
+    width: 380px;
+    padding: 22px;
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.25);
+
+    box-shadow: 0 0 40px rgba(255,130,0,0.35);
+
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.35s ease;
+
+    z-index: 999999;                    /* هذا أهم شيء */
+}
+
+/* يظهر */
+.holo-card.active {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+/* Header */
+.holo-header {
+    font-family: 'Anton', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    text-shadow: 0 0 10px rgba(255,150,0,0.8);
+}
+
+/* Body */
+.holo-body p {
+    margin: 8px 0;
+    font-size: 15px;
+}
+
+.holo-body span {
+    color: #ff9b00;
+    font-weight: 600;
+}
+
+/* Close Button */
+.holo-close {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.holo-close:hover {
+    opacity: 1;
+}
+
+/* Hologram scanlines */
+.holo-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        rgba(255,255,255,0.08) 0%,
+        rgba(255,255,255,0.01) 40%,
+        rgba(255,255,255,0.08) 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+    animation: holo-scan 6s linear infinite;
+}
+
+@keyframes holo-scan {
+    0% { opacity: 0.25; }
+    50% { opacity: 0.45; }
+    100% { opacity: 0.25; }
+}
+
+
+.hidden {
+    display: none !important;
+}
+
