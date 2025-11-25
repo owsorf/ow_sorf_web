@@ -175,224 +175,105 @@ body {
 /* -----------------------------------------
    MAP MARKER (KING'S ROW)
 ----------------------------------------- */
-/* ---------------------------
-   MAP MARKER (NEW FIXED VERSION)
-----------------------------*/
+
 .map-marker {
-  position: absolute;
-  top: 40%; 
-  left: 50%;
-  transform: translate(-50%, -50%);
-  cursor: pointer;
-  user-select: none;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: transform 0.25s ease;
-  z-index: 30;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.25s ease;
+    z-index: 30;
 }
 
 .marker-icon-wrapper {
-  position: relative;
-  width: 34px;
-  height: 34px;
-}
-
-/* الأيقونة الأساسية */
-.marker-icon {
-  width: 18px;
-  height: 18px;
-  border: 3px solid #ff8a00;
-  border-radius: 5px;
-  transform: translate(-50%, -50%) rotate(45deg);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  z-index: 2;
-}
-
-/* الحلقة الدوارة */
-.marker-ring {
-  position: absolute;
-  width: 46px;
-  height: 46px;
-  border: 3px solid rgba(255, 136, 0, 0.6);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-  animation: rotateRing 1.6s linear infinite;
-  z-index: 1;
-}
-
-@keyframes rotateRing {
-  0%   { transform: translate(-50%, -50%) rotate(0deg); }
-  100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-/* النص */
-.marker-text {
-  font-size: 22px;
-  font-weight: bold;
-  color: white;
-  letter-spacing: 1px;
-  text-shadow: 0 0 8px rgba(0,0,0,0.5);
-  font-family: 'Anton', sans-serif;
-}
-
-/* الخط تحت النص */
-.marker-line {
-  width: 110px;
-  height: 4px;
-  background: #ff8a00;
-  margin-top: 3px;
-  box-shadow: 0 0 10px rgba(255, 136, 0, 0.6);
-}
-
-/* التأثير عند المرور */
-.map-marker {
-  transform: translate(-50%, -50%);
-}
-
-.map-marker:hover {
-  scale: 1.06;
-}
-
-
-
-.map-marker:hover .marker-icon {
-  box-shadow: 0 0 12px rgba(255, 130, 0, 0.9);
-}
-
-.map-marker:hover .marker-ring {
-  border-color: rgba(255, 136, 0, 1);
-  border-right-color: transparent;
-  border-bottom-color: transparent;
-}
-
-
-
-/* الحاوية */
-.map-marker-animated {
-    position: absolute;
-    top: 48%;    /* عدل حسب رغبتك */
-    left: 30%;   /* عدل حسب رغبتك */
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    cursor: pointer;
-    z-index: 20;
-    user-select: none;
-}
-
-/* مركز العلامة (المربع + الحلقة) */
-.marker-center {
     position: relative;
-    width: 30px;
-    height: 30px;
+    width: 34px;
+    height: 34px;
 }
 
-/* المربع */
-.marker-square {
+.marker-icon {
     width: 18px;
     height: 18px;
     border: 3px solid #ff8a00;
-    border-radius: 4px;
-    position: absolute;
-    top: 30%;
-    left: 50%;
+    border-radius: 5px;
     transform: translate(-50%, -50%) rotate(45deg);
-    box-shadow: 0 0 10px rgba(255, 150, 0, 0.6);
-}
-
-/* الحلقة اللي تدور */
-.marker-ring {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 45px;
-    height: 45px;
-    transform: translate(-50%, -50%);
-    border: 2px solid rgba(255, 140, 0, 0.4);
+    z-index: 2;
+}
+
+.marker-ring {
+    position: absolute;
+    width: 46px;
+    height: 46px;
+    border: 3px solid rgba(255, 136, 0, 0.6);
     border-radius: 50%;
-    animation: spinRing 4s linear infinite;
-    box-shadow: 0 0 18px rgba(255, 140, 0, 0.2);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    animation: rotateRing 1.6s linear infinite;
+    z-index: 1;
 }
 
-/* حركة دوران الحلقة */
-@keyframes spinRing {
-    from { transform: translate(-50%, -50%) rotate(0deg); }
-    to   { transform: translate(-50%, -50%) rotate(360deg); }
+@keyframes rotateRing {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-/* النص */
-.marker-info {
-    display: flex;
-    flex-direction: column;
-}
-
-.marker-title {
-    font-family: 'Anton', sans-serif;
+.marker-text {
     font-size: 22px;
+    font-weight: bold;
     color: white;
     letter-spacing: 1px;
-    text-shadow: 0 0 10px rgba(0,0,0,0.4);
+    text-shadow: 0 0 8px rgba(0,0,0,0.5);
+    font-family: 'Anton', sans-serif;
 }
 
-.marker-underline {
-    width: 95px;
+.marker-line {
+    width: 110px;
     height: 4px;
     background: #ff8a00;
     margin-top: 3px;
-    box-shadow: 0 0 12px rgba(255, 140, 0, 0.6);
+    box-shadow: 0 0 10px rgba(255, 136, 0, 0.6);
 }
 
-
-
-/* الحلقة الدوارة حول الأيقونة */
-.marker-spin-ring {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border: 3px solid rgba(255, 138, 0, 0.6);
-    border-radius: 50%;
-    top: -5px;
-    left: -5px;
-
-    border-top-color: transparent;
-    border-left-color: transparent;
-
-    animation: spin 1.3s linear infinite;
-    pointer-events: none;
+.map-marker:hover {
+    scale: 1.06;
 }
 
-/* الأنيميشن */
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
+.map-marker:hover .marker-icon {
+    box-shadow: 0 0 12px rgba(255, 130, 0, 0.9);
 }
 
-
+.map-marker:hover .marker-ring {
+    border-color: rgba(255, 136, 0, 1);
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+}
 
 /* -----------------------------------------
-   HOLOGRAM CARD (FINAL FIXED VERSION)
+   HOLOGRAM CARD (KING)
 ----------------------------------------- */
 
 .holo-card {
-    position: absolute;                 /* مهم جداً */
+    position: absolute;
     top: 55%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.7);
-    width: 380px;
+    width: 430px; /* تكبير العرض */
     padding: 22px;
     border-radius: 16px;
 
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(8px);
     border: 1px solid rgba(255,255,255,0.25);
-
     box-shadow: 0 0 40px rgba(255,130,0,0.35);
 
     color: #fff;
@@ -402,17 +283,19 @@ body {
     pointer-events: none;
     transition: opacity 0.25s ease, transform 0.35s ease;
 
-    z-index: 999999;                    /* هذا أهم شيء */
+    z-index: 999999;
+
+    height: auto; 
+    transform: translate(-50%, -50%) scale(0.8); /* ← تكبير أنعم */
 }
 
-/* يظهر */
+
 .holo-card.active {
     opacity: 1;
     transform: translate(-50%, -50%) scale(1);
     pointer-events: auto;
 }
 
-/* Header */
 .holo-header {
     font-family: 'Anton', sans-serif;
     font-size: 28px;
@@ -421,7 +304,6 @@ body {
     text-shadow: 0 0 10px rgba(255,150,0,0.8);
 }
 
-/* Body */
 .holo-body p {
     margin: 8px 0;
     font-size: 15px;
@@ -432,7 +314,6 @@ body {
     font-weight: 600;
 }
 
-/* Close Button */
 .holo-close {
     position: absolute;
     top: 8px;
@@ -447,56 +328,105 @@ body {
     opacity: 1;
 }
 
-/* Hologram scanlines */
-.holo-card::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        rgba(255,255,255,0.08) 0%,
-        rgba(255,255,255,0.01) 40%,
-        rgba(255,255,255,0.08) 100%
-    );
-    pointer-events: none;
-    z-index: -1;
-    animation: holo-scan 6s linear infinite;
-}
-
-@keyframes holo-scan {
-    0% { opacity: 0.25; }
-    50% { opacity: 0.45; }
-    100% { opacity: 0.25; }
-}
-
-
-.hidden {
-    display: none !important;
-}
-
-/* -----------------------------------------
-   Polaroid Image inside Holo Card
------------------------------------------ */
+/* Polaroid (KING) */
 .holo-polaroid {
     width: 160px;
-    height: auto;
-    margin-bottom: 12px;
-
-    /* عشان ينحط يمين الهيدر */
     float: right;
     margin-left: 20px;
-
-    transform: rotate(2deg); /* إحساس صورة ملصوقة */
+    margin-bottom: 12px;
+    transform: rotate(2deg);
 }
 
 .holo-polaroid img {
     width: 100%;
-    height: auto;
     border-radius: 6px;
     filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
 }
 
+/* -----------------------------------------
+   OMNIC ALERT — MARKER
+----------------------------------------- */
+
+.omnic-alert {
+    position: absolute;
+    top: 78%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 30;
+}
+
+.omnic-alert .marker-line {
+    background-color: #ff3b3b !important;
+}
+
+/* -----------------------------------------
+   OMNIC ALERT — HOLOGRAM CARD
+----------------------------------------- */
+
+.holo-card-omnic {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    width: 380px;
+    padding: 22px;
+    border-radius: 16px;
+    background: rgba(35, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 50, 50, 0.35);
+    box-shadow: 0 0 55px rgba(255, 0, 0, 0.45);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.8);
+    z-index: 999999;
+    transition: opacity 0.25s ease, transform 0.45s cubic-bezier(0.19,1,0.22,1);
+}
+
+.holo-card-omnic.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.holo-header-omnic {
+    font-family: 'Anton', sans-serif;
+    font-size: 26px !important;
+    margin-bottom: 8px;
+}
+
+.holo-body-omnic p {
+    margin: 4px 0 !important;
+    font-size: 16px !important;
+    line-height: 1.25;
+}
+
+.holo-body-omnic span {
+    font-size: 19px !important;
+    font-weight: 700 !important;
+    color: #ff2e2e;
+}
+
+/* OMNIC – Polaroid */
+.holo-polaroid-omnic {
+    width: 135px !important;
+    float: right;
+    margin-right: 17px !important;
+    transform: rotate(2deg);
+}
+
+.holo-polaroid-omnic img {
+    width: 120% !important;
+    max-height: 150px !important;
+    object-fit: cover !important;
+    border-radius: 6px;
+}
 
 
+/* OMNIC ALERT — RED TRIANGLE ICON */
 .alert-icon-wrapper {
     position: relative;
     width: 32px;
@@ -508,7 +438,7 @@ body {
     height: 0;
     border-left: 16px solid transparent;
     border-right: 16px solid transparent;
-    border-bottom: 28px solid #ff1a1a; /* أحمر نيون */
+    border-bottom: 28px solid #ff1a1a;
     filter: drop-shadow(0 0 8px #ff1a1a);
     animation: pulseAlert 1.4s infinite ease-in-out;
 }
@@ -543,314 +473,607 @@ body {
 }
 
 
+/* -----------------------------------------
+   SHARED HOLO SIZE
+----------------------------------------- */
 
-.omnic-alert {
-    position: absolute;
-    top: 78%;   /* ← هنا نحدد نزولها تحت */
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    z-index: 30;
+.shared-holo {
+    width: 400px !important;
+    padding: 18px !important;
+    height: 210px !important;
+    transform: translate(-50%, -50%) scale(0.78) !important;
+    overflow: hidden !important;
 }
 
-
-
-.bg-img,
-.purple-layer,
-.moving-title {
-    pointer-events: none;
+#omnicCard {
+    left: 79% !important;
+    transform: translate(-50%, -50%) scale(0.78) !important;
 }
 
 
 /* -----------------------------------------
-   OMNIC HOLOGRAM CARD
+   OMNIC ALERT — RED TRIANGLE ICON
 ----------------------------------------- */
-.holo-card-omnic {
+
+.alert-icon-wrapper {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+.alert-triangle {
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 28px solid #ff1a1a;
+    filter: drop-shadow(0 0 8px #ff1a1a);
+    animation: pulseAlert 1.4s infinite ease-in-out;
+}
+
+.alert-exclamation {
     position: absolute;
-    top: 55%;
-    left: 50%;
-    width: 380px;
-    padding: 22px;
-    border-radius: 16px;
-
-    background: rgba(35, 0, 0, 0.45);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255, 50, 50, 0.35);
-
-    box-shadow: 0 0 55px rgba(255, 0, 0, 0.45);
-
-    color: #fff;
-    font-family: 'Inter', sans-serif;
-
-    opacity: 0;
+    top: 5px;
+    left: 13px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 0 6px rgba(255,50,50,0.9);
     pointer-events: none;
-    transform: translate(-50%, -50%) scale(0.8);
-
-    z-index: 999999;
-    transition: opacity 0.25s ease, transform 0.45s cubic-bezier(0.19,1,0.22,1);
 }
 
-/* حالة الظهور */
-.holo-card-omnic.active {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
+@keyframes pulseAlert {
+    0% {
+        border-bottom-color: #ff4747;
+        filter: drop-shadow(0 0 4px #ff2a2a);
+        transform: scale(1);
+    }
+    50% {
+        border-bottom-color: #ff0000;
+        filter: drop-shadow(0 0 15px #ff0000);
+        transform: scale(1.08);
+    }
+    100% {
+        border-bottom-color: #ff4747;
+        filter: drop-shadow(0 0 4px #ff2a2a);
+        transform: scale(1);
+    }
 }
 
-/* scanlines ناعمة */
-.holo-card-omnic::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        rgba(255,50,50,0.10) 0%,
-        rgba(255,50,50,0.02) 40%,
-        rgba(255,50,50,0.10) 100%
-    );
-    pointer-events: none;
-    z-index: -1;
-    animation: omnic-scan 6s linear infinite;
-}
-
-@keyframes omnic-scan {
-    0% { opacity: 0.25; }
-    50% { opacity: 0.45; }
-    100% { opacity: 0.25; }
-}
-
-/* Close button */
 .holo-close-omnic {
     position: absolute;
     top: 8px;
-    right: 12px;
+    right: 12px; /* يمين مضبوط */
     font-size: 24px;
     cursor: pointer;
     color: white;
-    opacity: 0.75;
+    opacity: 0.8;
+    z-index: 9999999; /* عشان يطلع فوق كل شيء */
 }
 
 .holo-close-omnic:hover {
     opacity: 1;
 }
 
-/* Title */
-.holo-header-omnic {
+
+/* -----------------------------------------
+   MISSION 3 MARKER – TRACER vs WIDOWMAKER
+----------------------------------------- */
+
+.mission3-marker {
+    position: absolute;
+    top: 60%;       /* تعدلها بعدين */
+    left: 35%;      /* تعدلها بعدين */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    z-index: 30;
+    user-select: none;
+    transition: transform 0.25s ease;
+}
+
+.mission3-marker:hover {
+    transform: scale(1.06);
+}
+
+//* -----------------------------------------
+   MISSION 3 – TRACER vs WIDOWMAKER
+----------------------------------------- */
+.mission3-marker {
+    position: absolute;
+    top: 58%;         /* عدلها حسب مكان المشن */
+    left: 42%;        /* عدلها لين تضبط */
+    transform: translate(-50%, -50%);
+    
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    cursor: pointer;
+    z-index: 30;
+    user-select: none;
+
+    transition: transform 0.25s ease;
+}
+
+/* الشكل (أيقونة المشن) */
+.mission3-icon-wrapper {
+    position: relative;
+    width: 34px;
+    height: 34px;
+}
+
+/* الشكل الخارجي */
+.mission3-icon {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #8e3aff;     /* البنفسجي */
+    border-radius: 5px;
+    transform: translate(-50%, -50%) rotate(45deg);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #ff8a00;           /* البرتقالي داخل */
+    box-shadow: 
+        0 0 12px rgba(255, 138, 0, 0.7),
+        0 0 16px rgba(142,58,255,0.5);
+}
+
+/* النص */
+.mission3-text {
     font-family: 'Anton', sans-serif;
-    font-size: 22px !important;   /* ← صغّره */
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-    text-shadow: 0 0 12px rgba(255, 0, 0, 0.75);
-}
-
-/* Body */
-.holo-body-omnic p {
-    margin: 5px 0;
-    font-size: 13px !important;   /* ← صغّره */
-    line-height: 1.3;
-}
-
-.holo-body-omnic span {
-    color: #ff2e2e;
-    font-weight: 700;
-}
-
-/* Polaroid */
-.holo-polaroid-omnic img {
-    width: 100% !important;
-    height: auto !important;
-    max-height: 120px !important;
-    object-fit: cover !important;
-}
-
-
-
-
-
-
-/* تصغير بطاقة OMNIC وتحريكها يمين */
-#omnicCard {
-    width: 310px !important;       /* تصغير العرض */
-    padding: 18px !important;
-    left: 78% !important;          /* يمين */
-    top: 50% !important;
-    transform: translate(-50%, -50%) scale(0.78) !important;
-}
-
-/* لما تظهر */
-#omnicCard.active {
-    transform: translate(-50%, -50%) scale(0.78) !important;
-}
-
-#omnicCard {
-    height: 200px !important;   /* قصّر ارتفاع البطاقة */
-    overflow: hidden !important; /* يمنع تمدد الذقن */
-}
-
-
-/* ------- OMNIC Polaroid (Final Clean Version) ------- */
-
-.holo-polaroid-omnic {
-    width: 120px !important;
-    float: right;
-    margin-left: 15px;
-    margin-bottom: 5px;
-    transform: rotate(2deg);
-}
-
-.holo-polaroid-omnic img {
-    width: 120%;
-    height: auto;
-    max-height: 110px !important;
-    object-fit: cover;
-    border-radius: 6px;
-    filter: drop-shadow(0 4px 10px rgba(0,0,0,0.45));
-}
-
-/* تعديل عنوان OMNIC */
-.holo-header-omnic {
-    font-family: 'Anton', sans-serif;
-    font-size: 20px !important;
-    margin-bottom: 8px !important;
+    font-size: 22px;
     letter-spacing: 1px;
+    color: white;
+    text-shadow: 0 0 8px rgba(0,0,0,0.5);
 }
 
-/* ضبط نص الجسم */
-.holo-body-omnic p {
-    margin: 4px 0 !important;
-    font-size: 12px !important;
-    line-height: 1.25;
+/* الخط تحت النص */
+.mission3-line {
+    width: 140px;
+    height: 4px;
+    background: #ff8a00;
+    margin-top: 3px;
+    box-shadow: 0 0 12px rgba(255, 138, 0, 0.7);
 }
 
-/* تقليل المساحة العلوية للبطاقة */
-#omnicCard {
-    height: 180px !important;
-    overflow: hidden !important;
+/* hover */
+.mission3-marker:hover {
+    transform: translate(-50%, -50%) scale(1.07);
 }
 
-
-/* -------------------------------------------------
-   🔥 توحيد حجم بطاقات KING + OMNIC بدون تخريب أي شيء
--------------------------------------------------- */
-
-/* حجم موحّد للبطاقتين */
-.shared-holo {
-    width: 320px !important;
-    padding: 18px !important;
-    border-radius: 16px !important;
-    transform: translate(-50%, -50%) scale(0.78) !important;
-    height: 210px !important;   /* نفس الارتفاع للكرتين */
-    overflow: hidden !important;
-}
-
-/* ضبط الصورة داخل كل بطاقة */
-.shared-holo .holo-polaroid img,
-.shared-holo .holo-polaroid-omnic img {
-    width: 105% !important;
-    height: auto !important;
-    max-height: 110px !important;
-    object-fit: cover !important;
-    border-radius: 6px;
-}
-
-/* توحيد حجم العناوين */
-.shared-holo .holo-header,
-.shared-holo .holo-header-omnic {
-    font-size: 20px !important;
-    margin-bottom: 8px !important;
-}
-
-/* توحيد حجم النص */
-.shared-holo .holo-body p,
-.shared-holo .holo-body-omnic p {
-    margin: 4px 0 !important;
-    font-size: 16px !important;
-    line-height: 1.25 !important;
-}
-
-.holo-card {
-    width: 360px !important;
-    padding: 24px !important;
-    transform: translate(-50%, -50%) scale(1) !important;
-}
-
-.holo-card.active {
-    transform: translate(-50%, -50%) scale(1) !important;
-}
-
-.holo-polaroid {
-    width: 150px !important;
+.mission3-marker:hover .mission3-icon {
+    box-shadow:
+        0 0 14px rgba(255,138,0,1),
+        0 0 16px rgba(142,58,255,0.7);
 }
 
 
-#omnicCard {
-    width: 360px !important;
-    height: 220px !important;
-    padding: 20px !important;
-    transform: translate(-50%, -50%) scale(0.9) !important;
-    overflow: hidden !important;
-}
-
-/* لما تظهر */
-#omnicCard.active {
-    transform: translate(-50%, -50%) scale(0.9) !important;
-}
-
-/* حجم الصورة داخل البطاقة */
-.holo-polaroid-omnic {
-    width: 135px !important;
-}
-
-.holo-polaroid-omnic img {
-    max-height: 130px !important;
+#mission3Card {
+    left: 50%;   /* أنت تحركها بعدين */
+    top: 55%;
 }
 
 
-/* KING'S ROW TEXT SIZES */
-.holo-header {
-    font-size: 28px !important;
+/* Close button for Mission 3 */
+.holo-close-m3 {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #fff;
+    opacity: 0.85;
+    z-index: 9999999;
+    transition: 0.2s ease;
+    padding: 4px 8px; /* يضيف مساحة ضغط */
 }
 
-.holo-body-kings p {
-    font-size: 15px !important;
-}
-
-.holo-body-kings span {
-    font-size: 17px !important;
-    font-weight: 700 !important;
-}
-
-/* OMNIC ALERT TEXT SIZES */
-.holo-header-omnic {
-    font-size: 26px !important;
-}
-
-.holo-body-omnic p {
-    font-size: 95px !important;
-}
-
-.holo-body-omnic span {
-    font-size: 19px !important;
-    font-weight: 700 !important;
+.holo-close-m3:hover {
+    opacity: 1;
+    transform: scale(1.15);
 }
 
 
-/* تكبير صورة OMNIC فقط */
-#omnicCard .holo-polaroid-omnic img {
-    width: 120% !important;    /* ← توسعة العرض */
-    max-height: 150px !important; /* ← رفع الارتفاع */
-    object-fit: cover !important;
+
+/* -----------------------------------------
+   MISSION 4 – LOOTBOX MARKER
+----------------------------------------- */
+.mission4-marker {
+    position: absolute;
+    top: 72%;       /* نعدلها بعدين لين تضبط */
+    left: 28%;      /* نعدلها بعدين */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    z-index: 30;
+    user-select: none;
+    transition: transform 0.25s ease;
 }
 
-/* تحريك حاوية صورة OMNIC يسار */
-#omnicCard .holo-polaroid-omnic {
-    margin-right: 17px !important;  /* ← يحرك يسار */
+
+
+/* أيقونة الصندوق */
+.mission4-icon-wrapper {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    z-index: 5; /* يخلي الأيقونة فوق الوهج */
 }
 
-.omnic-alert .marker-line {
-    background-color: #ff3b3b !important; /* أحمر واضح */
+.mission4-icon {
+    position: absolute;
+    z-index: 10; /* المربع فوق الهالة */
+    width: 26px;
+    height: 26px;
+    background: linear-gradient(145deg, #ffdd55, #ffbb00);
+    border: 2px solid #ffea9c;
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow:
+        0 0 10px rgba(255,220,120,0.95),
+        0 0 14px rgba(255,190,70,0.85);
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    color: #5a0aff;   /* بنفسجي بسيط */
+    text-shadow: 0 0 8px rgba(90,0,255,0.5);
 }
 
+/* علامة الاستفهام */
+.mission4-icon::before {
+    content: "?";
+    position: relative;
+}
+
+
+/* -----------------------------------------
+   MISSION 4 – LOOTBOX MARKER
+----------------------------------------- */
+.mission4-marker {
+    position: absolute;
+    top: 72%;
+    left: 28%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    user-select: none;
+
+    /* hover للكل */
+    transition: transform 0.25s ease;
+}
+
+
+
+/* نلغي أي hover منفصل */
+.mission4-icon-wrapper:hover,
+.mission4-text:hover {
+    transform: none;
+    cursor: pointer;
+}
+
+/* -----------------------------------------
+   BOX ICON WRAPPER
+----------------------------------------- */
+.mission4-icon-wrapper {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    overflow: visible;
+    z-index: 20;
+}
+
+/* -----------------------------------------
+   THE BOX ICON
+----------------------------------------- */
+.mission4-icon {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background: linear-gradient(145deg, #ffdd55, #ffbb00);
+    border: 2px solid #ffea9c;
+    border-radius: 4px;
+
+    z-index: 30;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    color: #5a0aff;
+
+    box-shadow:
+        0 0 10px rgba(255,220,120,0.95),
+        0 0 14px rgba(255,190,70,0.85);
+}
+
+.mission4-icon::before {
+    content: "?";
+}
+
+/* -----------------------------------------
+   FORTNITE EDGE SPARKS
+----------------------------------------- */
+.mission4-particles {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    top: 0;
+    left: 0;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 50;
+}
+
+.mission4-particles span {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 230, 120, 1);
+    border-radius: 50%;
+    opacity: 0;
+    animation: sparkLeak 1.4s infinite ease-out;
+}
+
+/* توزيع الشرارات */
+.mission4-particles span:nth-child(1) { top: -4px; left: 50%; transform: translateX(-50%); }
+.mission4-particles span:nth-child(2) { top: 50%; left: -4px; transform: translateY(-50%); }
+.mission4-particles span:nth-child(3) { bottom: -4px; left: 50%; transform: translateX(-50%); }
+.mission4-particles span:nth-child(4) { top: 50%; right: -4px; transform: translateY(-50%); }
+.mission4-particles span:nth-child(5) { top: 4px; right: 4px; }
+.mission4-particles span:nth-child(6) { bottom: 4px; left: 4px; }
+
+/* delays */
+.mission4-particles span:nth-child(2) { animation-delay: 0.2s; }
+.mission4-particles span:nth-child(3) { animation-delay: 0.4s; }
+.mission4-particles span:nth-child(4) { animation-delay: 0.6s; }
+.mission4-particles span:nth-child(5) { animation-delay: 0.8s; }
+.mission4-particles span:nth-child(6) { animation-delay: 1s; }
+
+/* حركة التسريب */
+@keyframes sparkLeak {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(0.4);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(3px, -7px) scale(1);
+    }
+}
+
+/* -----------------------------------------
+   TEXT
+----------------------------------------- */
+.mission4-text {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    color: white;
+}
+
+.mission4-line {
+    width: 140px;
+    height: 4px;
+    background: #ffdd55;
+    margin-top: 3px;
+    box-shadow: 0 0 12px rgba(255, 220, 120, 0.8);
+}
+
+
+/* البطاقة */
+.lootbox-card {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 310px;
+    height: 420px;
+    background: rgba(0,0,0,0.65);
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 18px;
+    padding: 18px;
+    backdrop-filter: blur(6px);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow: 
+        0 0 12px rgba(255,255,255,0.15),
+        0 0 28px rgba(255,220,120,0.35);
+
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.hidden {
+    display: none;
+}
+
+/* المحتوى الداخلي */
+.lootbox-card-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* صورة اللوت بوكس / الجيف / المنتج */
+.lootbox-img {
+    width: 80%;     /* بدل 100% */
+    height: auto;
+    user-select: none;
+    pointer-events: auto;
+    transition: transform 0.25s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+/* تأثير هزّة بسيطة عند الاقتراب */
+.lootbox-img:hover {
+    transform: scale(1.05) rotate(1deg);
+}
+
+/* كلمة OPEN */
+.lootbox-open-text {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Anton', sans-serif;
+    font-size: 26px;
+    color: #ffe483;
+    text-shadow: 0 0 8px rgba(255,220,120,0.9);
+}
+
+
+#lootbox-open-btn {
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+#lootbox-open-btn:active {
+    transform: scale(0.92);
+    opacity: 0.6;
+}
+
+.lootbox-gif {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.lootbox-gif.show {
+    opacity: 1;
+}
+
+
+
+
+
+.lootbox-img {
+    transition: transform 0.25s ease, box-shadow 0.35s ease, opacity 0.35s ease;
+}
+
+
+
+/* رسالة المحاولات */
+.lootbox-message {
+    position: absolute;
+    top: 270px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    color: #ffe483;
+    line-height: 1.4;
+
+    text-shadow: 0 0 8px rgba(255,220,120,0.9);
+    opacity: 1;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+
+    z-index: 9999; /* أهم شيء */
+}
+/* الف كود يعيال  */
+.lootbox-card-content {
+    position: relative; /* لازم */
+}
+
+
+
+
+
+.lootbox-result {
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    color: #ffe483;
+    text-shadow: 0 0 8px rgba(255,220,120,0.8);
+    opacity: 1;
+}
+
+.lootbox-result.hidden {
+    display: none;
+}
+
+#lootbox-result-link {
+    display: block;
+    margin-top: 6px;
+    color: #ffd66b;
+    text-decoration: underline;
+    font-size: 16px;
+}
+
+
+/* حالة البطاقة وهي مخفية */
+.lootbox-card.hidden {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.85);
+    pointer-events: none;
+}
+
+/* حالة ظهور البطاقة */
+.lootbox-card.show-card {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+
+/* ----- فتح البطاقة (شغل Mission Alive القديم) ----- */
+
+.lootbox-card {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.16, 0.82, 0.32, 1);
+}
+
+.lootbox-card.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* ----- أنميشن الإغلاق ----- */
+.lootbox-card.hide {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+}
+
+
+
+
+
+/* -----------------------------------------
+   END
+----------------------------------------- */
 
 

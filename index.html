@@ -4,23 +4,30 @@
     <meta charset="UTF-8">
     <title>OW_SORF</title>
 
-    <!-- خطوط جوجل داخل الرأس -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@400;600&family=Bebas+Neue&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div id="app">
 
+    <!-- Background Image -->
     <img src="images/king's-row--background.png" class="bg-img">
+
+    <!-- Main Title -->
     <h1 class="main-title">OW_SORF</h1>
 
+    <!-- Moving Background Title -->
     <h1 class="moving-title">OW_SORF</h1>
 
+    <!-- Purple Overlay -->
     <div class="purple-layer"></div>
 
+    <!-- Buttons -->
     <div class="buttons-layer">
 
         <div class="btn-wrapper">
@@ -33,45 +40,44 @@
         <button class="ow-button">Guides</button>
     </div>
 
-<!-- نقطة KING'S ROW الأصلية -->
-<div class="map-marker">
 
-    <div class="marker-icon-wrapper">
-        <div class="marker-ring"></div>
-        <div class="marker-icon"></div>
+    <!-- KING'S ROW MARKER -->
+    <div class="map-marker">
+
+        <div class="marker-icon-wrapper">
+            <div class="marker-ring"></div>
+            <div class="marker-icon"></div>
+        </div>
+
+        <div>
+            <div class="marker-text">KING'S ROW</div>
+            <div class="marker-line"></div>
+        </div>
+
     </div>
 
-    <div>
-        <div class="marker-text">KING'S ROW</div>
-        <div class="marker-line"></div>
+
+    <!-- OMNIC ALERT MARKER -->
+    <div class="map-marker omnic-alert">
+
+        <div class="alert-icon-wrapper">
+            <div class="alert-triangle"></div>
+            <div class="alert-exclamation">!</div>
+        </div>
+
+        <div>
+            <div class="marker-text">OMNIC ALERT</div>
+            <div class="marker-line"></div>
+        </div>
+
     </div>
 
-</div>
-
-
-<!-- نقطة OMNIC ALERT الجديدة والمستقلة -->
-<div class="map-marker omnic-alert">
-
-    <div class="alert-icon-wrapper">
-        <div class="alert-triangle"></div>
-        <div class="alert-exclamation">!</div>
-    </div>
-
-    <div>
-        <div class="marker-text">OMNIC ALERT</div>
-        <div class="marker-line"></div>
-    </div>
-
-</div>
+</div> <!-- END #app -->
 
 
 
-</div> <!-- نهاية map-marker -->
-
-
-<!-- HOLOGRAM CARD (هنا مكانها الصحيح) -->
+<!-- KING'S ROW CARD -->
 <div class="holo-card shared-holo hidden">
-
 
     <div class="holo-polaroid">
         <img src="images/kings-row-polaroid.png.png" alt="King's Row Snapshot">
@@ -90,9 +96,9 @@
 </div>
 
 
+
 <!-- OMNIC ALERT CARD -->
 <div id="omnicCard" class="holo-card-omnic shared-holo hidden">
-
 
     <div class="holo-close-omnic">×</div>
 
@@ -108,21 +114,128 @@
         <p><span>Status:</span> Evacuations in progress. Stay inside.</p>
     </div>
 
-</div>
-
-
-
-</div>
-
-
-
-
-
-
-
-
     
 
-    <script src="script.js"></script>
+</div>
+
+<!-- MISSION 3 – TRACER vs WIDOWMAKER -->
+<div class="map-marker mission3-marker">
+
+    <div class="mission3-icon-wrapper">
+        <div class="mission3-icon"></div>
+    </div>
+
+    <div>
+        <div class="marker-text mission3-text">MISSION: ALIVE</div>
+        <div class="marker-line mission3-line"></div>
+    </div>
+
+</div>
+
+
+<!-- MISSION 3 – ALIVE FIGHT HOLOGRAM CARD -->
+<div id="mission3Card" class="holo-card-omnic shared-holo hidden" style="background: rgba(60,0,85,0.45); border-color: rgba(180,80,255,0.35); box-shadow: 0 0 55px rgba(155,60,255,0.45);">
+
+    <div class="holo-close-m3">×</div>
+
+    <div class="holo-polaroid-omnic">
+        <img src="images/alive fight.gif" alt="Alive Fight">
+    </div>
+
+    <div class="holo-header-omnic" style="text-shadow: 0 0 12px rgba(200,0,255,0.75);">
+        ALIVE – FIGHT
+    </div>
+
+    <div class="holo-body-omnic">
+        <p><span>Event:</span> Battle between Tracer and Widowmaker during the “Alive” mission.</p>
+        <p><span>Location:</span> King’s Row – Clocktower.</p>
+        <p><span>Threat Level:</span> High - sniper activity detected.</p>
+        <p><span>Status:</span> Combat in progress. Stay back.</p>
+    </div>
+
+</div>
+
+
+<!-- MISSION 4 – LOOTBOX -->
+<div class="map-marker mission4-marker">
+
+    <div class="mission4-icon-wrapper">
+        <div class="mission4-icon"></div>
+
+        <!-- الشرارات -->
+        <div class="mission4-particles">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+
+    <div> <!-- هذا هو الصحيح -->
+        <div class="marker-text mission4-text">MISSION: LOOTBOX</div>
+        <div class="marker-line mission4-line"></div>
+    </div>
+
+</div>
+>
+
+
+<!-- MISSION 4 – LOOTBOX HOLO CARD -->
+<div id="lootbox-card" class="lootbox-card hidden">
+
+    <div class="lootbox-card-content">
+        
+
+        <!-- رسالة المحاولات -->
+        <div id="lootbox-message" class="lootbox-message">
+            لقد حصلت على لوت بوكس<br>
+            لديك خمس محاولات باليوم - جرب حظك ✨
+        </div>
+        
+
+
+        <!-- صورة اللوت بوكس -->
+        <img src="images/Legendary_Loot_Box.png"
+             id="lootbox-main-img"
+             class="lootbox-img"
+             alt="Lootbox">
+
+             <div id="lootbox-result-msg" class="lootbox-result hidden">
+    <p id="lootbox-result-text"></p>
+    <a id="lootbox-result-link" href="#" target="_blank">اضغط هنا للحصول عليه</a>
+    </div>
+
+
+</div>
+
+
+        <!-- زر الفتح -->
+        <div id="lootbox-open-btn" class="lootbox-open-text">OPEN</div>
+
+        <!-- نتيجة المنتج -->
+        <div id="lootbox-result-msg" class="lootbox-result hidden">
+            <p id="lootbox-result-text"></p>
+            <a id="lootbox-result-link" href="#" target="_blank">اضغط هنا للحصول عليه</a>
+        </div>
+
+        
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<script src="script.js"></script>
+
 </body>
 </html>
