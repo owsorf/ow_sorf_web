@@ -86,10 +86,10 @@ body {
     cursor: pointer;
 }
 
-.ow-button:hover {
+/* .ow-button:hover {
     transform: scale(1.08);
     box-shadow: 0 0 12px rgba(255, 255, 255, 0.4);
-}
+} */
 
 
 /* -----------------------------------------
@@ -580,9 +580,9 @@ body {
     transition: transform 0.25s ease;
 }
 
-.mission3-marker:hover {
+/* .mission3-marker:hover {
     transform: scale(1.06);
-}
+} */
 
 /* -----------------------------------------
    MISSION 3 – TRACER vs WIDOWMAKER
@@ -645,10 +645,10 @@ body {
     box-shadow: 0 0 12px rgba(255, 138, 0, 0.7);
 }
 
-/* hover */
+/* hover
 .mission3-marker:hover {
     transform: translate(-50%, -50%) scale(1.07);
-}
+} */
 
 .mission3-marker:hover .mission3-icon {
     box-shadow:
@@ -762,10 +762,10 @@ body {
 
 
 
-/* البوب-اب */
+/* البوب-اب
 .mission4-marker:hover {
     transform: translate(-50%, -50%) scale(1.07);
-}
+} */
 
 /* -----------------------------------------
    BOX ICON WRAPPER
@@ -929,10 +929,10 @@ body {
     margin: 0 auto;
 }
 
-/* تأثير هزّة بسيطة عند الاقتراب */
+/* تأثير هزّة بسيطة عند الاقتراب
 .lootbox-img:hover {
     transform: scale(1.05) rotate(1deg);
-}
+} */
 
 /* كلمة OPEN */
 .lootbox-open-text {
@@ -1515,30 +1515,30 @@ body {
         box-shadow: none !important;
     }
 
-    /* 2. ماركر King’s Row */
+    /* 2. ماركر King’s Row
     .map-marker:hover {
         transform: translate(-50%, -50%) scale(1) !important;
-    }
+    } */
 
-    /* 3. ماركر Omnic Alert */
+    /* 3. ماركر Omnic Alert
     .omnic-alert:hover {
         transform: translate(-50%, -50%) scale(1) !important;
-    }
+    } */
 
     /* 4. ماركر Mission 3 */
     .mission3-marker:hover {
         transform: none !important;
     }
 
-    /* 5. ماركر Mission 4 */
+    /* 5. ماركر Mission 4
     .mission4-marker:hover {
         transform: translate(-50%, -50%) scale(1) !important;
-    }
+    } */
 
-    /* 6. هزّة صورة اللوت بوكس */
+    /* 6. هزّة صورة اللوت بوكس
     .lootbox-img:hover {
         transform: none !important;
-    }
+    } */
 }
 
 
