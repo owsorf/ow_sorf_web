@@ -447,3 +447,25 @@ function resetLootboxCard(){
 }
 
 
+
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const menuPanel = document.querySelector('.mobile-menu-panel');
+
+    menuBtn.addEventListener('click', () => {
+        menuPanel.classList.toggle('open');
+    });
+
+
+
+    const closeBtn = document.querySelector('.close-mobile-menu');
+
+closeBtn.addEventListener('click', () => {
+    menuPanel.classList.remove('open');
+});
+
+document.addEventListener('click', (e) => {
+    // إذا الضغط كان خارج القائمة و خارج زر المينيو
+    if (!menuPanel.contains(e.target) && !menuBtn.contains(e.target)) {
+        menuPanel.classList.remove('open');
+    }
+});
