@@ -1546,3 +1546,29 @@ body {
 
 
 
+@media (max-width: 768px) {
+    .moving-text {
+        animation: none !important;
+        transform: none !important;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .lootbox-img:hover,
+    .map-marker:hover,
+    .mission3-marker:hover,
+    .mission4-marker:hover,
+    .omnic-alert:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .some-layer {
+        backdrop-filter: none !important;
+        background: rgba(0,0,0,0.3) !important;
+    }
+}
