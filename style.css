@@ -1503,72 +1503,99 @@ body {
 
 
 
-/* ============================
-   MOBILE PERFORMANCE PATCH
-   يخفف/يطفي كل هوفرات السكيل
-   ============================ */
+/* ===========================
+   MOBILE VERSION (OFFICIAL)
+   =========================== */
 @media (max-width: 768px) {
 
-    /* 1. أزرار OW */
-    .ow-button:hover {
+    /* 1) الخلفية والتحريك */
+    .moving-title,
+    .moving-text {
+        animation: none !important;
+        transform: none !important;
+        opacity: 0.2; /* تخفيف بدون حذف */
+    }
+
+    /* 2) ترتيب الأزرار */
+    .buttons-layer {
+        top: 120px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    /* 3) تصغير الأزرار */
+    .ow-button,
+    .home-btn,
+    .activities-btn,
+    .thank-btn,
+    .guides-btn {
+        min-width: 160px;
+        font-size: 14px;
+        padding: 10px 16px;
+    }
+
+    /* 4) إلغاء السكيل والهوفر */
+    .ow-button:hover,
+    .home-btn:hover,
+    .activities-btn:hover,
+    .thank-btn:hover,
+    .guides-btn:hover {
         transform: none !important;
         box-shadow: none !important;
     }
 
-    /* 2. ماركر King’s Row
-    .map-marker:hover {
-        transform: translate(-50%, -50%) scale(1) !important;
-    } */
-
-    /* 3. ماركر Omnic Alert
-    .omnic-alert:hover {
-        transform: translate(-50%, -50%) scale(1) !important;
-    } */
-
-    /* 4. ماركر Mission 3 */
-    .mission3-marker:hover {
-        transform: none !important;
+    /* 5) إطفاء الجيفات */
+    .home-gif,
+    .activities-gif,
+    .thank-gif,
+    .guides-gif {
+        opacity: 0.1 !important;
     }
 
-    /* 5. ماركر Mission 4
-    .mission4-marker:hover {
-        transform: translate(-50%, -50%) scale(1) !important;
-    } */
-
-    /* 6. هزّة صورة اللوت بوكس
-    .lootbox-img:hover {
-        transform: none !important;
-    } */
-}
-
-
-
-
-
-
-@media (max-width: 768px) {
-    .moving-text {
-        animation: none !important;
-        transform: none !important;
+    /* 6) الماركرز – تصغير ومنع هوفر */
+    .map-marker,
+    .mission3-marker,
+    .mission4-marker,
+    .omnic-alert {
+        transform: scale(0.75) translate(-50%, -50%) !important;
+        left: 50% !important;
     }
-}
 
-
-@media (max-width: 768px) {
-    .lootbox-img:hover,
     .map-marker:hover,
     .mission3-marker:hover,
     .mission4-marker:hover,
     .omnic-alert:hover {
-        transform: none !important;
-        box-shadow: none !important;
+        transform: scale(0.75) translate(-50%, -50%) !important;
     }
-}
 
+    /* 7) كروت الهولو – تصغير */
+    .holo-card,
+    .holo-card-omnic,
+    #mission3Card,
+    .lootbox-card {
+        width: 80vw !important;
+        transform: translate(-50%, -50%) scale(0.85) !important;
+        padding: 14px !important;
+    }
 
-@media (max-width: 768px) {
-    .some-layer {
-        backdrop-filter: none !important;
-        background: rgba(0,0,0,0.3) !important;
+    /* 8) صندوق اللوت بوكس منظم */
+    .lootbox-img {
+        width: 70%;
+        margin-top: 10px;
+    }
+
+    /* 9) النصوص الكبيرة */
+    .main-title {
+        font-size: 32px;
+        left: 20px;
+        top: 25px;
+    }
+
+    /* 10) القائمة الجانبية */
+    .mobile-menu-panel {
+        width: 80%;
     }
 }
