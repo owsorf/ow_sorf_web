@@ -584,7 +584,7 @@ body {
     transform: scale(1.06);
 }
 
-//* -----------------------------------------
+/* -----------------------------------------
    MISSION 3 – TRACER vs WIDOWMAKER
 ----------------------------------------- */
 .mission3-marker {
@@ -1499,6 +1499,46 @@ body {
 
 .close-mobile-menu:hover {
     opacity: 1;
+}
+
+
+
+/* ============================
+   MOBILE PERFORMANCE PATCH
+   يخفف/يطفي كل هوفرات السكيل
+   ============================ */
+@media (max-width: 768px) {
+
+    /* 1. أزرار OW */
+    .ow-button:hover {
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    /* 2. ماركر King’s Row */
+    .map-marker:hover {
+        transform: translate(-50%, -50%) scale(1) !important;
+    }
+
+    /* 3. ماركر Omnic Alert */
+    .omnic-alert:hover {
+        transform: translate(-50%, -50%) scale(1) !important;
+    }
+
+    /* 4. ماركر Mission 3 */
+    .mission3-marker:hover {
+        transform: none !important;
+    }
+
+    /* 5. ماركر Mission 4 */
+    .mission4-marker:hover {
+        transform: translate(-50%, -50%) scale(1) !important;
+    }
+
+    /* 6. هزّة صورة اللوت بوكس */
+    .lootbox-img:hover {
+        transform: none !important;
+    }
 }
 
 
