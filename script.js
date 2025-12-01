@@ -160,6 +160,8 @@ document.addEventListener("click", (e) => {
 function closeKings() {
     kingsCard.classList.remove("active");
     setTimeout(() => kingsCard.classList.add("hidden"), 200);
+
+    
 }
 
 

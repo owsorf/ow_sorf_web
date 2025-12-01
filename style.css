@@ -19,6 +19,9 @@ body {
     height: 101%;
     object-fit: cover;
     z-index: 0;
+
+    /* تحسين الأداء */
+    will-change: transform;
 }
 
 
@@ -38,12 +41,15 @@ body {
 ----------------------------------------- */
 .purple-layer {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     background: rgba(120, 0, 255, 0.35);
+
+    /* blur خفيف مع تحسين */
     backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
     z-index: 1;
 }
 
@@ -66,25 +72,26 @@ body {
    Buttons
 ----------------------------------------- */
 .ow-button {
-    will-change: transform, opacity;
+    will-change: transform;
     padding: 12px 20px;
     background: rgba(255, 255, 255, 0.12);
     color: white;
-    border: none;
+    border: 2px solid rgba(255,255,255,0.18);
     border-radius: 8px;
     cursor: pointer;
     min-width: 120px;
     text-align: center;
     white-space: nowrap;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
     font-family: 'Inter', sans-serif;
     font-weight: 600;
     font-size: 15px;
-
-    position: relative;
     overflow: hidden;
-        border: 2px solid rgba(255,255,255,0.18);
-    cursor: pointer;
+    position: relative;
+
+    /* دمج جميع الترانزيشن */
+    transition: 
+        transform 0.40s ease,
+        box-shadow 0.40s ease;
 }
 
 .ow-button:hover {
@@ -108,6 +115,9 @@ body {
 
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
     text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+
+    /* تحسين */
+    will-change: opacity;
 }
 
 
@@ -127,7 +137,11 @@ body {
     z-index: 1;
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
 
+    /* الأنيميشن خفيف */
     animation: slide-loop 90s linear infinite;
+
+    /* أداء */
+    will-change: transform;
 }
 
 @keyframes slide-loop {
@@ -140,19 +154,21 @@ body {
    GIF overlay inside button
 ----------------------------------------- */
 .gif-overlay {
-    object-fit: cover;
-image-rendering: pixelated;
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    image-rendering: pixelated;
     background-size: cover;
     background-position: center;
     border-radius: 8px;
     z-index: -1;
     opacity: 0.8;
     pointer-events: none;
+
+    /* تحسين */
+    will-change: opacity;
 }
 
 
@@ -173,16 +189,20 @@ image-rendering: pixelated;
     pointer-events: none;
     z-index: -1;
     opacity: 1;
+
+    /* دمج الـ transition */
     transition: opacity 0.45s ease-out;
+
+    /* تحسين */
+    will-change: opacity;
 }
 
 
 /* -----------------------------------------
-   MAP MARKER (KING'S ROW)
+   MAP MARKER (UNIFIED)
 ----------------------------------------- */
 
 .map-marker {
-    will-change: transform, opacity;
     position: absolute;
     top: 40%;
     left: 50%;
@@ -192,10 +212,15 @@ image-rendering: pixelated;
     display: flex;
     align-items: center;
     gap: 12px;
-    
     z-index: 30;
+
+    /* أداء */
+    will-change: transform, opacity;
+
+    transition: transform 0.25s ease;
 }
 
+/* marker icon */
 .marker-icon-wrapper {
     position: relative;
     width: 34px;
@@ -212,6 +237,8 @@ image-rendering: pixelated;
     top: 50%;
     left: 50%;
     z-index: 2;
+
+    will-change: box-shadow;
 }
 
 .marker-ring {
@@ -227,6 +254,9 @@ image-rendering: pixelated;
     border-bottom-color: transparent;
     animation: rotateRing 1.6s linear infinite;
     z-index: 1;
+
+    /* تحسين */
+    will-change: transform;
 }
 
 @keyframes rotateRing {
@@ -251,7 +281,7 @@ image-rendering: pixelated;
     box-shadow: 0 0 10px rgba(255, 136, 0, 0.6);
 }
 
-/* البوب-اب */
+/* Hover pop */
 .map-marker:hover {
     transform: translate(-50%, -50%) scale(1.07);
 }
@@ -266,21 +296,23 @@ image-rendering: pixelated;
     border-bottom-color: transparent;
 }
 
+
 /* -----------------------------------------
    HOLOGRAM CARD (KING)
 ----------------------------------------- */
 
 .holo-card {
-    will-change: transform, opacity;
     position: absolute;
     top: 55%;
     left: 50%;
-    width: 430px; /* تكبير العرض */
+    width: 430px;
     padding: 22px;
     border-radius: 16px;
 
     background: rgba(255,255,255,0.08);
     backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
     border: 1px solid rgba(255,255,255,0.25);
     box-shadow: 0 0 12px rgba(255,130,0,0.35);
 
@@ -289,14 +321,15 @@ image-rendering: pixelated;
 
     opacity: 0;
     pointer-events: none;
+
+    /* تحسين */
+    will-change: transform, opacity;
     transition: opacity 0.25s ease, transform 0.35s ease;
 
     z-index: 999999;
-
-    height: auto; 
-    transform: translate(-50%, -50%) scale(0.8); /* ← تكبير أنعم */
+    height: auto;
+    transform: translate(-50%, -50%) scale(0.8);
 }
-
 
 .holo-card.active {
     opacity: 1;
@@ -310,6 +343,8 @@ image-rendering: pixelated;
     letter-spacing: 2px;
     margin-bottom: 16px;
     text-shadow: 0 0 10px rgba(255,150,0,0.8);
+
+    will-change: opacity;
 }
 
 .holo-body p {
@@ -330,6 +365,8 @@ image-rendering: pixelated;
     cursor: pointer;
     color: #fff;
     opacity: 0.8;
+
+    transition: opacity 0.25s;
 }
 
 .holo-close:hover {
@@ -343,18 +380,24 @@ image-rendering: pixelated;
     margin-left: 20px;
     margin-bottom: 12px;
     transform: rotate(2deg);
+
+    will-change: transform;
 }
 
+/* -----------------------------------------
+   Polaroid Image (KING)
+----------------------------------------- */
 .holo-polaroid img {
     width: 100%;
     border-radius: 6px;
     filter: drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+    will-change: transform;
 }
+
 
 /* -----------------------------------------
    OMNIC ALERT — MARKER
 ----------------------------------------- */
-
 .omnic-alert {
     position: absolute;
     top: 78%;
@@ -363,23 +406,22 @@ image-rendering: pixelated;
     align-items: center;
     gap: 12px;
     z-index: 30;
+    will-change: transform;
 }
 
 .omnic-alert .marker-line {
     background-color: #ff3b3b !important;
 }
 
-/* البوب-اب */
 .omnic-alert:hover {
     transform: translate(-50%, -50%) scale(1.07);
 }
 
+
 /* -----------------------------------------
    OMNIC ALERT — HOLOGRAM CARD
 ----------------------------------------- */
-
 .holo-card-omnic {
-    will-change: transform, opacity;
     position: absolute;
     top: 55%;
     left: 50%;
@@ -388,15 +430,22 @@ image-rendering: pixelated;
     border-radius: 16px;
     background: rgba(35, 0, 0, 0.45);
     backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
     border: 1px solid rgba(255, 50, 50, 0.35);
     box-shadow: 0 0 12px rgba(255, 0, 0, 0.45);
+
     color: #fff;
     font-family: 'Inter', sans-serif;
+
     opacity: 0;
     pointer-events: none;
-    
+    transform: translate(-50%, -50%) scale(0.8);
     z-index: 999999;
-    transition: opacity 0.25s ease, transform 0.45s cubic-bezier(0.19,1,0.22,1);
+
+    /* تحسين */
+    will-change: opacity, transform;
+    transition: opacity 0.25s ease,
+                transform 0.45s cubic-bezier(0.19,1,0.22,1);
 }
 
 .holo-card-omnic.active {
@@ -407,39 +456,45 @@ image-rendering: pixelated;
 
 .holo-header-omnic {
     font-family: 'Anton', sans-serif;
-    font-size: 26px !important;
+    font-size: 26px;
     margin-bottom: 8px;
 }
 
 .holo-body-omnic p {
-    margin: 4px 0 !important;
-    font-size: 16px !important;
+    margin: 4px 0;
+    font-size: 16px;
     line-height: 1.25;
 }
 
 .holo-body-omnic span {
-    font-size: 19px !important;
-    font-weight: 700 !important;
+    font-size: 19px;
+    font-weight: 700;
     color: #ff2e2e;
 }
 
-/* OMNIC – Polaroid */
+
+/* -----------------------------------------
+   OMNIC – Polaroid
+----------------------------------------- */
 .holo-polaroid-omnic {
-    width: 135px !important;
+    width: 135px;
     float: right;
-    margin-right: 17px !important;
+    margin-right: 17px;
     transform: rotate(2deg);
 }
 
 .holo-polaroid-omnic img {
-    width: 120% !important;
-    max-height: 150px !important;
-    object-fit: cover !important;
+    width: 120%;
+    max-height: 150px;
+    object-fit: cover;
     border-radius: 6px;
+    will-change: transform;
 }
 
 
-/* OMNIC ALERT — RED TRIANGLE ICON */
+/* -----------------------------------------
+   UNIQUE — ALERT ICON (Merged)
+----------------------------------------- */
 .alert-icon-wrapper {
     position: relative;
     width: 32px;
@@ -452,8 +507,12 @@ image-rendering: pixelated;
     border-left: 16px solid transparent;
     border-right: 16px solid transparent;
     border-bottom: 28px solid #ff1a1a;
+
     filter: drop-shadow(0 0 8px #ff1a1a);
-    animation: pulseAlert 1.4s infinite ease-in-out;
+    animation: pulseAlert 1.4s ease-in-out infinite;
+
+    /* تحسين */
+    will-change: transform, filter;
 }
 
 .alert-exclamation {
@@ -489,13 +548,13 @@ image-rendering: pixelated;
 /* -----------------------------------------
    SHARED HOLO SIZE
 ----------------------------------------- */
-
 .shared-holo {
     width: 400px !important;
     padding: 18px !important;
     height: 210px !important;
     transform: translate(-50%, -50%) scale(0.78) !important;
     overflow: hidden !important;
+    will-change: transform;
 }
 
 #omnicCard {
@@ -505,68 +564,25 @@ image-rendering: pixelated;
 
 
 /* -----------------------------------------
-   OMNIC ALERT — RED TRIANGLE ICON
+   OMNIC CLOSE BUTTON
 ----------------------------------------- */
-
-.alert-icon-wrapper {
-    position: relative;
-    width: 32px;
-    height: 32px;
-}
-
-.alert-triangle {
-    width: 0;
-    height: 0;
-    border-left: 16px solid transparent;
-    border-right: 16px solid transparent;
-    border-bottom: 28px solid #ff1a1a;
-    filter: drop-shadow(0 0 8px #ff1a1a);
-    animation: pulseAlert 1.4s infinite ease-in-out;
-}
-
-.alert-exclamation {
-    position: absolute;
-    top: 5px;
-    left: 13px;
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 0 0 6px rgba(255,50,50,0.9);
-    pointer-events: none;
-}
-
-@keyframes pulseAlert {
-    0% {
-        border-bottom-color: #ff4747;
-        filter: drop-shadow(0 0 4px #ff2a2a);
-        transform: scale(1);
-    }
-    50% {
-        border-bottom-color: #ff0000;
-        filter: drop-shadow(0 0 15px #ff0000);
-        transform: scale(1.08);
-    }
-    100% {
-        border-bottom-color: #ff4747;
-        filter: drop-shadow(0 0 4px #ff2a2a);
-        transform: scale(1);
-    }
-}
-
 .holo-close-omnic {
     position: absolute;
     top: 8px;
-    right: 12px; /* يمين مضبوط */
+    right: 12px;
     font-size: 24px;
     cursor: pointer;
     color: white;
     opacity: 0.8;
-    z-index: 9999999; /* عشان يطلع فوق كل شيء */
+    z-index: 9999999;
+
+    transition: opacity 0.25s ease;
 }
 
 .holo-close-omnic:hover {
     opacity: 1;
 }
+
 
 
 /* -----------------------------------------
@@ -576,30 +592,12 @@ image-rendering: pixelated;
 .mission3-marker {
     will-change: transform, opacity;
     position: absolute;
-    top: 60%;       /* تعدلها بعدين */
-    left: 35%;      /* تعدلها بعدين */
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    z-index: 30;
-    user-select: none;
-    
-}
 
-.mission3-marker:hover {
-    transform: scale(1.06);
-}
-
-//* -----------------------------------------
-   MISSION 3 – TRACER vs WIDOWMAKER
------------------------------------------ */
-.mission3-marker {
-    position: absolute;
-    top: 58%;         /* عدلها حسب مكان المشن */
-    left: 42%;        /* عدلها لين تضبط */
+    /* نستخدم النسخة الأخيرة لأنها الصحيحة */
+    top: 58%;
+    left: 42%;
     transform: translate(-50%, -50%);
-    
+
     display: flex;
     align-items: center;
     gap: 12px;
@@ -611,48 +609,7 @@ image-rendering: pixelated;
     transition: transform 0.25s ease;
 }
 
-/* الشكل (أيقونة المشن) */
-.mission3-icon-wrapper {
-    position: relative;
-    width: 34px;
-    height: 34px;
-}
-
-/* الشكل الخارجي */
-.mission3-icon {
-    width: 22px;
-    height: 22px;
-    border: 2px solid #8e3aff;     /* البنفسجي */
-    border-radius: 5px;
-    transform: translate(-50%, -50%) rotate(45deg);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background: #ff8a00;           /* البرتقالي داخل */
-    box-shadow: 
-        0 0 12px rgba(255, 138, 0, 0.7),
-        0 0 16px rgba(142,58,255,0.5);
-}
-
-/* النص */
-.mission3-text {
-    font-family: 'Anton', sans-serif;
-    font-size: 22px;
-    letter-spacing: 1px;
-    color: white;
-    text-shadow: 0 0 8px rgba(0,0,0,0.5);
-}
-
-/* الخط تحت النص */
-.mission3-line {
-    width: 140px;
-    height: 4px;
-    background: #ff8a00;
-    margin-top: 3px;
-    box-shadow: 0 0 12px rgba(255, 138, 0, 0.7);
-}
-
-/* hover */
+/* Hover */
 .mission3-marker:hover {
     transform: translate(-50%, -50%) scale(1.07);
 }
@@ -664,13 +621,66 @@ image-rendering: pixelated;
 }
 
 
+/* -----------------------------------------
+   MISSION 3 ICON
+----------------------------------------- */
+.mission3-icon-wrapper {
+    position: relative;
+    width: 34px;
+    height: 34px;
+}
+
+.mission3-icon {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #8e3aff;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+
+    background: #ff8a00;
+    box-shadow:
+        0 0 12px rgba(255, 138, 0, 0.7),
+        0 0 16px rgba(142,58,255,0.5);
+
+    will-change: transform;
+}
+
+
+/* -----------------------------------------
+   MISSION 3 TEXT + LINE
+----------------------------------------- */
+.mission3-text {
+    font-family: 'Anton', sans-serif;
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: white;
+    text-shadow: 0 0 8px rgba(0,0,0,0.5);
+}
+
+.mission3-line {
+    width: 140px;
+    height: 4px;
+    background: #ff8a00;
+    margin-top: 3px;
+    box-shadow: 0 0 12px rgba(255, 138, 0, 0.7);
+}
+
+
+/* -----------------------------------------
+   MISSION 3 CARD POSITION
+----------------------------------------- */
 #mission3Card {
-    left: 50%;   /* أنت تحركها بعدين */
+    left: 50%;
     top: 55%;
 }
 
 
-/* Close button for Mission 3 */
+/* -----------------------------------------
+   MISSION 3 CLOSE BUTTON
+----------------------------------------- */
 .holo-close-m3 {
     position: absolute;
     top: 8px;
@@ -680,8 +690,9 @@ image-rendering: pixelated;
     color: #fff;
     opacity: 0.85;
     z-index: 9999999;
-    transition: 0.2s ease;
-    padding: 4px 8px; /* يضيف مساحة ضغط */
+    padding: 4px 8px;
+
+    transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
 .holo-close-m3:hover {
@@ -691,70 +702,13 @@ image-rendering: pixelated;
 
 
 
+
 /* -----------------------------------------
-   MISSION 4 – LOOTBOX MARKER
+   MISSION 4 — LOOTBOX MARKER
 ----------------------------------------- */
+
 .mission4-marker {
     will-change: transform, opacity;
-    position: absolute;
-    top: 72%;       /* نعدلها بعدين لين تضبط */
-    left: 28%;      /* نعدلها بعدين */
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    z-index: 30;
-    user-select: none;
-    transition: transform 0.25s ease;
-}
-
-
-
-/* أيقونة الصندوق */
-.mission4-icon-wrapper {
-    position: relative;
-    width: 34px;
-    height: 34px;
-    z-index: 5; /* يخلي الأيقونة فوق الوهج */
-}
-
-.mission4-icon {
-    position: absolute;
-    z-index: 10; /* المربع فوق الهالة */
-    width: 26px;
-    height: 26px;
-    background: linear-gradient(145deg, #ffdd55, #ffbb00);
-    border: 2px solid #ffea9c;
-    border-radius: 4px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow:
-        0 0 10px rgba(255,220,120,0.95),
-        0 0 14px rgba(255,190,70,0.85);
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-family: 'Anton', sans-serif;
-    font-size: 18px;
-    color: #5a0aff;   /* بنفسجي بسيط */
-    text-shadow: 0 0 8px rgba(90,0,255,0.5);
-}
-
-/* علامة الاستفهام */
-.mission4-icon::before {
-    content: "?";
-    position: relative;
-}
-
-
-/* -----------------------------------------
-   MISSION 4 – LOOTBOX MARKER
------------------------------------------ */
-.mission4-marker {
     position: absolute;
     top: 72%;
     left: 28%;
@@ -763,21 +717,22 @@ image-rendering: pixelated;
     gap: 12px;
     cursor: pointer;
     user-select: none;
+    z-index: 30;
 
-    /* hover للكل */
-    
+    transform: translate(-50%, -50%);
+    transition: transform 0.25s ease;
 }
 
-
-
-/* البوب-اب */
+/* Hover */
 .mission4-marker:hover {
     transform: translate(-50%, -50%) scale(1.07);
 }
 
+
 /* -----------------------------------------
-   BOX ICON WRAPPER
+   ICON WRAPPER
 ----------------------------------------- */
+
 .mission4-icon-wrapper {
     position: relative;
     width: 34px;
@@ -786,23 +741,22 @@ image-rendering: pixelated;
     z-index: 20;
 }
 
+
 /* -----------------------------------------
    THE BOX ICON
 ----------------------------------------- */
+
 .mission4-icon {
     position: absolute;
-    width: 26px;
-    height: 26px;
-
     top: 50%;
     left: 50%;
-    
+    width: 26px;
+    height: 26px;
+    transform: translate(-50%, -50%);
 
     background: linear-gradient(145deg, #ffdd55, #ffbb00);
     border: 2px solid #ffea9c;
     border-radius: 4px;
-
-    z-index: 30;
 
     display: flex;
     align-items: center;
@@ -811,25 +765,30 @@ image-rendering: pixelated;
     font-family: 'Anton', sans-serif;
     font-size: 18px;
     color: #5a0aff;
+    text-shadow: 0 0 8px rgba(90,0,255,0.5);
 
     box-shadow:
         0 0 10px rgba(255,220,120,0.95),
         0 0 14px rgba(255,190,70,0.85);
+
+    z-index: 30;
 }
 
 .mission4-icon::before {
     content: "?";
 }
 
+
 /* -----------------------------------------
    FORTNITE EDGE SPARKS
 ----------------------------------------- */
+
 .mission4-particles {
     position: absolute;
-    width: 34px;
-    height: 34px;
     top: 0;
     left: 0;
+    width: 34px;
+    height: 34px;
     overflow: visible;
     pointer-events: none;
     z-index: 50;
@@ -846,10 +805,26 @@ image-rendering: pixelated;
 }
 
 /* توزيع الشرارات */
-.mission4-particles span:nth-child(1) { top: -4px; left: 50%; transform: translateX(-50%); }
-.mission4-particles span:nth-child(2) { top: 50%; left: -4px; transform: translateY(-50%); }
-.mission4-particles span:nth-child(3) { bottom: -4px; left: 50%; transform: translateX(-50%); }
-.mission4-particles span:nth-child(4) { top: 50%; right: -4px; transform: translateY(-50%); }
+.mission4-particles span:nth-child(1) {
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.mission4-particles span:nth-child(2) {
+    top: 50%;
+    left: -4px;
+    transform: translateY(-50%);
+}
+.mission4-particles span:nth-child(3) {
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.mission4-particles span:nth-child(4) {
+    top: 50%;
+    right: -4px;
+    transform: translateY(-50%);
+}
 .mission4-particles span:nth-child(5) { top: 4px; right: 4px; }
 .mission4-particles span:nth-child(6) { bottom: 4px; left: 4px; }
 
@@ -860,7 +835,7 @@ image-rendering: pixelated;
 .mission4-particles span:nth-child(5) { animation-delay: 0.8s; }
 .mission4-particles span:nth-child(6) { animation-delay: 1s; }
 
-/* حركة التسريب */
+/* حركة الشرارة */
 @keyframes sparkLeak {
     0% {
         opacity: 1;
@@ -872,9 +847,11 @@ image-rendering: pixelated;
     }
 }
 
+
 /* -----------------------------------------
-   TEXT
+   MISSION 4 — TEXT
 ----------------------------------------- */
+
 .mission4-text {
     font-family: 'Anton', sans-serif;
     font-size: 22px;
@@ -890,65 +867,127 @@ image-rendering: pixelated;
 }
 
 
-/* البطاقة */
+/* -----------------------------------------
+   LOOTBOX CARD — BASE
+----------------------------------------- */
+
 .lootbox-card {
     will-change: transform, opacity;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     width: 310px;
     height: 420px;
+
+    padding: 18px;
+    border-radius: 18px;
+
     background: rgba(0,0,0,0.65);
     border: 2px solid rgba(255,255,255,0.4);
-    border-radius: 18px;
-    padding: 18px;
     backdrop-filter: blur(3px);
-    z-index: 999;
+
     display: flex;
     align-items: center;
     justify-content: center;
 
-    box-shadow: 
+    box-shadow:
         0 0 12px rgba(255,255,255,0.15),
         0 0 28px rgba(255,220,120,0.35);
 
-    transition: opacity 0.25s ease, transform 0.25s ease;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.8);
+
+    transition:
+        opacity 0.28s ease,
+        transform 0.28s cubic-bezier(0.16, 0.82, 0.32, 1);
+
+    z-index: 999;
 }
 
-.hidden {
-    display: none;
+
+/* Show / Hide states */
+.lootbox-card.show,
+.lootbox-card.show-card {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
 }
 
-/* المحتوى الداخلي */
+.lootbox-card.hide,
+.lootbox-card.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.85);
+}
+
+
+/* -----------------------------------------
+   LOOTBOX CARD CONTENT
+----------------------------------------- */
+
 .lootbox-card-content {
     position: relative;
     width: 100%;
     height: 100%;
 }
 
-/* صورة اللوت بوكس / الجيف / المنتج */
+
+/* -----------------------------------------
+   LOOTBOX IMAGE (BOX / GIF / ITEM)
+----------------------------------------- */
+
 .lootbox-img {
-    width: 80%;     /* بدل 100% */
+    width: 80%;
     height: auto;
-    user-select: none;
-    pointer-events: auto;
-    transition: transform 0.25s ease;
     display: block;
     margin: 0 auto;
+
+    user-select: none;
+    pointer-events: auto;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.35s ease,
+        opacity 0.35s ease;
 }
 
-/* تأثير هزّة بسيطة عند الاقتراب */
 .lootbox-img:hover {
     transform: scale(1.05) rotate(1deg);
 }
 
-/* كلمة OPEN */
+
+/* GIF overlay */
+.lootbox-gif {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: auto;
+
+    opacity: 0;
+    transition: opacity 0.4s ease;
+
+    object-fit: cover;
+    image-rendering: pixelated;
+}
+
+.lootbox-gif.show {
+    opacity: 1;
+}
+
+
+/* -----------------------------------------
+   OPEN TEXT (القديم — إن احتجته)
+----------------------------------------- */
+
 .lootbox-open-text {
     position: absolute;
     bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
+
     font-family: 'Anton', sans-serif;
     font-size: 26px;
     color: #ffe483;
@@ -956,52 +995,16 @@ image-rendering: pixelated;
 }
 
 
-#lootbox-open-btn {
-    cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
+/* -----------------------------------------
+   LOOTBOX RESULT MESSAGE
+----------------------------------------- */
 
-#lootbox-open-btn:active {
-    transform: scale(0.92);
-    opacity: 0.6;
-}
-
-.lootbox-gif {
-    object-fit: cover;
-image-rendering: pixelated;
-
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.lootbox-gif.show {
-    object-fit: cover;
-image-rendering: pixelated;
-
-    opacity: 1;
-}
-
-
-
-
-
-.lootbox-img {
-    transition: transform 0.25s ease, box-shadow 0.35s ease, opacity 0.35s ease;
-}
-
-
-
-/* رسالة المحاولات */
 .lootbox-message {
     position: absolute;
     top: 270px;
     left: 50%;
     transform: translateX(-50%);
+
     width: 90%;
     text-align: center;
 
@@ -1011,33 +1014,28 @@ image-rendering: pixelated;
     line-height: 1.4;
 
     text-shadow: 0 0 8px rgba(255,220,120,0.9);
+
     opacity: 1;
-    transition: opacity 0.4s ease;
     pointer-events: none;
 
-    z-index: 9999; /* أهم شيء */
-}
-/* الف كود يعيال  */
-.lootbox-card-content {
-    position: relative; /* لازم */
+    transition: opacity 0.4s ease;
+    z-index: 9999;
 }
 
 
-
-
-
+/* النتيجة */
 .lootbox-result {
     position: absolute;
     bottom: -10px;
     left: 50%;
-    transform: translateX(-50%);
     width: 90%;
+    transform: translateX(-50%);
     text-align: center;
+
     font-family: 'Anton', sans-serif;
     font-size: 18px;
     color: #ffe483;
     text-shadow: 0 0 8px rgba(255,220,120,0.8);
-    opacity: 1;
 }
 
 .lootbox-result.hidden {
@@ -1047,56 +1045,17 @@ image-rendering: pixelated;
 #lootbox-result-link {
     display: block;
     margin-top: 6px;
+    font-size: 16px;
     color: #ffd66b;
     text-decoration: underline;
-    font-size: 16px;
-}
-
-
-/* حالة البطاقة وهي مخفية */
-.lootbox-card.hidden {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.85);
-    pointer-events: none;
-}
-
-/* حالة ظهور البطاقة */
-.lootbox-card.show-card {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-    pointer-events: auto;
-    transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-
-/* ----- فتح البطاقة (شغل Mission Alive القديم) ----- */
-
-.lootbox-card {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
-    transition: opacity 0.28s ease, transform 0.28s cubic-bezier(0.16, 0.82, 0.32, 1);
-}
-
-.lootbox-card.show {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-}
-
-/* ----- أنميشن الإغلاق ----- */
-.lootbox-card.hide {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.8);
 }
 
 
 
-/* -----------------------------------------
-   END
------------------------------------------ */
 
-
-
-
+/* =========================================
+   HOME BUTTON
+========================================= */
 .home-btn {
     will-change: transform, opacity;
     position: relative;
@@ -1107,12 +1066,12 @@ image-rendering: pixelated;
     justify-content: center;
     gap: 8px;
 
-    background: rgba(255,255,255,0.07);
-    backdrop-filter: blur(3px);
-
+    padding: 12px 28px;
     color: white;
     font-weight: 600;
-    padding: 12px 28px;
+
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(3px);
 
     border: 2px solid rgba(255,255,255,0.18);
     cursor: pointer;
@@ -1120,53 +1079,44 @@ image-rendering: pixelated;
     transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-/* الخلفية (جيف) */
 .home-btn .home-gif {
-    object-fit: cover;
-image-rendering: pixelated;
-
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+    image-rendering: pixelated;
 
     opacity: 0;
     z-index: 2;
-    pointer-events: none;
     mix-blend-mode: screen;
 
+    pointer-events: none;
     transition: opacity 0.4s ease;
 }
 
 .home-btn:hover .home-gif {
-    object-fit: cover;
-image-rendering: pixelated;
-
     opacity: 0.55;
 }
 
-/* النص */
 .home-btn span {
     position: relative;
     z-index: 5;
 }
 
 .home-btn:hover {
-    border-color: rgba(250, 156, 29, 0.9); /* برتقالي واضح */
-
+    border-color: rgba(250, 156, 29, 0.9);
     box-shadow:
-        0 0 14px rgba(250, 156, 29, 0.75),   /* برتقالي أساسي */
-        0 0 26px rgba(74, 76, 78, 0.65),     /* فضي فاتح */
-        0 0 38px rgba(74, 76, 78, 0.45);     /* فضي أكبر */
+        0 0 14px rgba(250, 156, 29, 0.75),
+        0 0 26px rgba(74, 76, 78, 0.65),
+        0 0 38px rgba(74, 76, 78, 0.45);
 }
 
 
-
-/* ---------------------------
+/* =========================================
    ACTIVITIES BUTTON
----------------------------- */
-
+========================================= */
 .activities-btn {
     will-change: transform, opacity;
     position: relative;
@@ -1177,48 +1127,40 @@ image-rendering: pixelated;
     justify-content: center;
     gap: 8px;
 
+    padding: 12px 28px;
+    font-weight: 600;
+    color: white;
+
     background: rgba(255,255,255,0.07);
     backdrop-filter: blur(3px);
 
-    color: white;
-    font-weight: 600;
-
-    
-    padding: 12px 28px;
-
     border: 2px solid rgba(255,255,255,0.16);
-
     cursor: pointer;
+
     transition: transform 0.25s ease, box-shadow 0.3s ease;
 }
 
-/* الجيف الخلفي */
 .activities-btn .activities-gif {
-    object-fit: cover;
-image-rendering: pixelated;
-
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+    image-rendering: pixelated;
 
     opacity: 0;
     z-index: 3;
-    pointer-events: none;
     mix-blend-mode: screen;
 
+    pointer-events: none;
     transition: opacity 0.45s ease;
 }
 
 .activities-btn:hover .activities-gif {
-    object-fit: cover;
-image-rendering: pixelated;
-
     opacity: 0.45;
 }
 
-/* وهج سماوي */
 .activities-btn:hover {
     box-shadow:
         0 0 14px rgba(0,229,255,0.55),
@@ -1226,179 +1168,147 @@ image-rendering: pixelated;
 }
 
 
-
-
-/* زر OPEN الجديد */
+/* =========================================
+   LOOTBOX BUTTON (OW STYLE)
+========================================= */
 .lootbox-btn-ow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
 
-  padding: 8px 18px;
-  color: white;
-  text-shadow: 2px 2px rgb(116, 116, 116);
-  text-transform: uppercase;
-  cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 
-  border: solid 2px black;
-  letter-spacing: 1px;
-  font-weight: 600;
-  font-size: 18px;
-  background-color: hsl(49deg 98% 60%);
-  border-radius: 50px;
+    padding: 8px 18px;
+    font-size: 18px;
+    font-weight: 600;
 
-  position: absolute;
-  bottom: 14px;               /* نفس مكان كلمة OPEN القديمة */
-  left: 50%;
-  transform: translateX(-50%);
+    color: white;
+    text-shadow: 2px 2px rgb(116, 116, 116);
+    text-transform: uppercase;
 
-  overflow: hidden;
-  z-index: 9999;
-  transition: all 0.5s ease;
+    background-color: hsl(49deg 98% 60%);
+    border: 2px solid black;
+    border-radius: 50px;
+
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 9999;
+    transition: all 0.5s ease;
 }
 
 .lootbox-btn-ow:active {
-  transform: translateX(-50%) scale(0.9);
-  transition: all 120ms ease;
+    transform: translateX(-50%) scale(0.9);
+    transition: all 120ms ease;
 }
 
-/* اللوجو */
 .lootbox-btn-ow .ow-icon {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  z-index: 3;
-  transition: all 0.5s ease;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    z-index: 3;
+    transition: all 0.5s ease;
 }
 
 .lootbox-btn-ow:hover .ow-icon {
-  transform: scale(1.6) translate(170%, 0);
+    transform: scale(1.6) translate(170%, 0);
 }
 
-/* النصَين */
 .now {
-  position: absolute;
-  left: 0;
-  transform: translateX(-100%);
-  transition: all 0.5s ease;
-  z-index: 2;
+    position: absolute;
+    left: 0;
+    transform: translateX(-100%);
+    z-index: 2;
+    transition: all 0.5s ease;
 }
 
 .play {
-  transition: all 0.5s ease;
-  transition-delay: 300ms;
+    transition: all 0.5s ease;
+    transition-delay: 300ms;
 }
 
 .lootbox-btn-ow:hover .now {
-  transform: translateX(10px);
-  transition-delay: 300ms;
+    transform: translateX(10px);
+    transition-delay: 300ms;
 }
 
 .lootbox-btn-ow:hover .play {
-  transform: translateX(200%);
-  transition-delay: 300ms;
+    transform: translateX(200%);
+    transition-delay: 300ms;
 }
 
 
-
-.guides-btn {
+/* =========================================
+   GUIDES BUTTON
+========================================= */
+.guides-btn,
+.thank-btn {
     will-change: transform, opacity;
     width: 100px;
     height: 45px;
+
     position: relative;
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
+
     isolation: isolate;
     border: 2px solid rgba(255,255,255,0.18);
-    cursor: pointer;
-    
 
-    
+    cursor: pointer;
+    color: white;
 }
 
-/* الجيف */
-.guides-gif {
-    object-fit: cover;
-image-rendering: pixelated;
-
+.guides-gif,
+.thank-gif {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
+
     object-fit: cover;
+    image-rendering: pixelated;
+
     opacity: 0;
-    transition: opacity 0.35s ease;
     pointer-events: none;
+    transition: opacity 0.35s ease;
     z-index: 1;
 }
 
-/* عند الهوفر */
 .guides-btn:hover .guides-gif {
-    object-fit: cover;
-image-rendering: pixelated;
-
     opacity: 0.55;
 }
 
 .guides-text {
     position: relative;
     z-index: 3;
-    mix-blend-mode: normal;  /* منع تأثير الخلفية على النص */
 }
 
 .guides-btn:hover {
-    box-shadow: 0 0 15px rgba(0, 153, 255, 0.6),
-                0 0 25px rgba(0, 153, 255, 0.4);
+    box-shadow:
+        0 0 15px rgba(0, 153, 255, 0.6),
+        0 0 25px rgba(0, 153, 255, 0.4);
     border-color: rgba(0,153,255,0.7);
 }
 
 
-
-.thank-btn {
-    will-change: transform, opacity;
-    width: 100px;
-    height: 45px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    isolation: isolate;
-    border: 2px solid rgba(255,255,255,0.18);
-    cursor: pointer;
-}
-
+/* =========================================
+   THANK BUTTON
+========================================= */
 .thank-gif {
-    object-fit: cover;
-image-rendering: pixelated;
-
-    position: absolute;
     top: 50%;
     left: 50%;
-    width: 100%;     /* أكبر من الزر */
-    height: 100%;    /* أكبر من الزر */
     transform: translate(-50%, -50%);
-    object-fit: cover;
-    border-radius: 0;   /* نخليه بدون corners */
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    pointer-events: none;
-    z-index: 1;
 }
 
-
-/* عند الهوفر يظهر الجيف */
 .thank-btn:hover .thank-gif {
-    object-fit: cover;
-image-rendering: pixelated;
-
     opacity: 0.6;
 }
 
-/* وهج ناعم بنفسجي يناسب الموقع */
 .thank-btn:hover {
     box-shadow:
         0 0 15px rgba(200, 90, 255, 0.6),
@@ -1406,35 +1316,38 @@ image-rendering: pixelated;
     border-color: rgba(200, 90, 255, 0.8);
 }
 
-/* النص فوق الجيف */
-.thank-btn span,
-.thank-btn {
+.thank-btn span {
     position: relative;
     z-index: 3;
-    color: white;
-    mix-blend-mode: normal;
 }
 
 
 
-/* ========== Mobile Menu ========== */
 
+/* =========================================
+   MOBILE MENU BUTTON
+========================================= */
 .mobile-menu-btn {
-    display: none;
     position: fixed;
     top: 15px;
     left: 15px;
-    z-index: 999;
+
     width: 42px;
     height: 42px;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.12);
-    backdrop-filter: blur(3px);
-    border: 1px solid rgba(255,255,255,0.25);
-    display: flex;
+
+    display: flex;               /* زر مرئي فقط بالميديا */
     align-items: center;
     justify-content: center;
+
+    border-radius: 8px;
     cursor: pointer;
+
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(3px);
+
+    z-index: 999;
+    display: none;               /* يبان فقط بالميديا */
 }
 
 .mobile-menu-btn img {
@@ -1443,19 +1356,27 @@ image-rendering: pixelated;
     object-fit: contain;
 }
 
+
+/* =========================================
+   MOBILE MENU PANEL
+========================================= */
 .mobile-menu-panel {
     position: fixed;
     top: 0;
     left: -70%;
     width: 70%;
     height: 100vh;
-    background: rgba(15, 10, 25, 0.65);
-    backdrop-filter: blur(3px);
-    padding-top: 80px;
+
     display: flex;
     flex-direction: column;
     gap: 20px;
-    transition: 0.35s ease;
+
+    padding-top: 80px;
+
+    background: rgba(15, 10, 25, 0.65);
+    backdrop-filter: blur(3px);
+
+    transition: left 0.35s ease;
     z-index: 998;
 }
 
@@ -1463,20 +1384,30 @@ image-rendering: pixelated;
     left: 0;
 }
 
+
+/* =========================================
+   MOBILE LINKS
+========================================= */
 .mobile-link {
     width: 80%;
     margin: 0 auto;
     padding: 15px 0;
-    background: rgba(255,255,255,0.08);
+
+    font-size: 17px;
+    text-align: center;
+    cursor: pointer;
+
     color: white;
+    background: rgba(255,255,255,0.08);
+
     border: none;
     border-radius: 8px;
-    font-size: 17px;
-    cursor: pointer;
-    text-align: center;
 }
 
-/* Hide original buttons on mobile */
+
+/* =========================================
+   MOBILE RESPONSIVE BEHAVIOR
+========================================= */
 @media (max-width: 768px) {
     .top-buttons {
         display: none;
@@ -1487,6 +1418,15 @@ image-rendering: pixelated;
 }
 
 
+.map-marker {
+    z-index: 99999 !important;
+    pointer-events: auto !important;
+}
+
+
+#lootbox-card {
+    z-index: 9999999 !important;
+}
 
 
 
