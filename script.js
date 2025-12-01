@@ -126,12 +126,15 @@ btn.addEventListener("mouseleave", () => {
 // KING'S ROW CARD — CLEAN FIX
 // ----------------------------
 
-const kingsMarker = document.querySelector(".map-marker");
+// استهداف المشن الأولى بالـ ID الجديد
+const kingsMarker = document.querySelector("#kings-marker");
 const kingsCard   = document.querySelector(".holo-card");
 const kingsClose  = document.querySelector(".holo-close");
 
-// فتح البطاقة - smooth open
-kingsMarker.addEventListener("click", () => {
+// فتح البطاقة
+kingsMarker.addEventListener("click", (e) => {
+    e.stopPropagation(); 
+
     kingsCard.classList.remove("hidden");
 
     setTimeout(() => {
@@ -140,28 +143,33 @@ kingsMarker.addEventListener("click", () => {
 });
 
 // زر الإغلاق (X)
-kingsClose.addEventListener("click", () => {
+kingsClose.addEventListener("click", (e) => {
+    e.stopPropagation();
     closeKings();
 });
 
 // إغلاق عند الضغط خارج البطاقة
 document.addEventListener("click", (e) => {
-    // اذا البطاقة مو مفتوحة خلها ساكته
+
+    // إذا البطاقة غير مفتوحة → تجاهل
     if (!kingsCard.classList.contains("active")) return;
 
-    // اذا ضغط داخل البطاقة أو على الماركر لا تقفل
-    if (kingsCard.contains(e.target) || e.target.closest(".map-marker")) return;
+    // إذا الضغط داخل البطاقة → لا تقفل
+    if (kingsCard.contains(e.target)) return;
 
-    // غير كذا... قفل البطاقة
+    // إذا الضغط على المشن 1 → لا تقفل
+    if (e.target.closest("#kings-marker")) return;
+
+    // غير كذا → قفل البطاقة
     closeKings();
 });
 
-// دالة الإغلاق
 function closeKings() {
     kingsCard.classList.remove("active");
-    setTimeout(() => kingsCard.classList.add("hidden"), 200);
 
-    
+    setTimeout(() => {
+        kingsCard.classList.add("hidden");
+    }, 200);
 }
 
 

@@ -303,8 +303,8 @@ body {
 
 .holo-card {
     position: absolute;
-    top: 55%;
-    left: 50%;
+    top: 40%;
+    left: 79%;
     width: 430px;
     padding: 22px;
     border-radius: 16px;
@@ -423,7 +423,7 @@ body {
 ----------------------------------------- */
 .holo-card-omnic {
     position: absolute;
-    top: 55%;
+    top: 80%;
     left: 50%;
     width: 380px;
     padding: 22px;
@@ -673,8 +673,8 @@ body {
    MISSION 3 CARD POSITION
 ----------------------------------------- */
 #mission3Card {
-    left: 50%;
-    top: 55%;
+    left: 72%;
+    top: 58%;
 }
 
 
@@ -874,9 +874,9 @@ body {
 .lootbox-card {
     will-change: transform, opacity;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 310px;
+    top: 58%;
+    left: 20%;
+    width: 250px;
     height: 420px;
 
     padding: 18px;
@@ -1417,17 +1417,33 @@ body {
     }
 }
 
-
-.map-marker {
-    z-index: 99999 !important;
-    pointer-events: auto !important;
+/* كل الماركرات */
+.map-marker,
+.omnic-alert,
+.mission3-marker,
+.mission4-marker {
+    z-index: 2000 !important;
 }
 
+/* بطاقات المشنات */
+.holo-card,
+.holo-card-omnic,
+#mission3Card {
+    z-index: 4000 !important;
+}
 
+/* بطاقة اللوت بوكس */
 #lootbox-card {
-    z-index: 9999999 !important;
+    z-index: -1 !important;  /* مخفي */
 }
 
+/* لما يفتح */
+#lootbox-card.show {
+    z-index: 999999 !important; /* أعلى شيء بالموقع */
+}
 
-
+/* لما يختفي */
+#lootbox-card.hidden {
+    z-index: -1 !important;
+}
 
