@@ -192,7 +192,7 @@ image-rendering: pixelated;
     display: flex;
     align-items: center;
     gap: 12px;
-    transition: transform 0.25s ease;
+    
     z-index: 30;
 }
 
@@ -394,7 +394,7 @@ image-rendering: pixelated;
     font-family: 'Inter', sans-serif;
     opacity: 0;
     pointer-events: none;
-    transform: translate(-50%, -50%) scale(0.8);
+    
     z-index: 999999;
     transition: opacity 0.25s ease, transform 0.45s cubic-bezier(0.19,1,0.22,1);
 }
@@ -584,7 +584,7 @@ image-rendering: pixelated;
     cursor: pointer;
     z-index: 30;
     user-select: none;
-    transition: transform 0.25s ease;
+    
 }
 
 .mission3-marker:hover {
@@ -765,7 +765,7 @@ image-rendering: pixelated;
     user-select: none;
 
     /* hover للكل */
-    transition: transform 0.25s ease;
+    
 }
 
 
@@ -796,7 +796,7 @@ image-rendering: pixelated;
 
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    
 
     background: linear-gradient(145deg, #ffdd55, #ffbb00);
     border: 2px solid #ffea9c;
